@@ -43,47 +43,80 @@
     </nav>
 
     <header id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-32">
-        <div>
-            <div class="inline-block bg-orange-200 border-2 border-black px-3 py-1 font-bold text-xs mb-4">
-                STATUS: ACTIVE RESEARCHER
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-none">
-                I break apps <br> 
-                <span class="text-gray-500">to make them</span> <br>
-                <span class="underline decoration-wavy decoration-orange-500">unbreakable.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
-                Security Researcher securing 1M+ students on Edu-tech platforms. 
-                Specialist in <strong>Android Hardening</strong>, <strong>Root Detection</strong>, and <strong>Anti-Piracy</strong>.
-            </p>
-            <div class="flex gap-4">
-                <a href="#projects" class="bg-black text-white px-6 py-3 font-bold brutal-border hover:bg-gray-800 transition">
-                    View Case Studies
-                </a>
-            </div>
+    <div>
+        <div class="inline-block bg-orange-200 border-2 border-black px-3 py-1 font-bold text-xs mb-4">
+            STATUS: ACTIVE RESEARCHER
         </div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-none">
+            I break apps <br> 
+            <span class="text-gray-500">to make them</span> <br>
+            <span class="underline decoration-wavy decoration-orange-500">unbreakable.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+            Security Researcher securing 1M+ students on Edu-tech platforms. 
+            Specialist in <strong>Android Hardening</strong>, <strong>Root Detection</strong>, and <strong>Anti-Piracy</strong>.
+        </p>
+        <div class="flex gap-4">
+            <a href="#projects" class="bg-black text-white px-6 py-3 font-bold brutal-border hover:bg-gray-800 transition">
+                View Case Studies
+            </a>
+        </div>
+    </div>
 
-        <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl">
-            <div class="bg-gray-800 p-3 flex gap-2 border-b border-gray-700">
-                <div class="terminal-dot bg-red-mac"></div>
-                <div class="terminal-dot bg-yellow-mac"></div>
-                <div class="terminal-dot bg-green-mac"></div>
-            </div>
-            <div class="p-6 font-mono text-sm text-green-400 h-64 overflow-y-auto">
-                <p><span class="text-blue-400">yuth@lab</span>:<span class="text-blue-200">~</span>$ whoami</p>
-                <p class="mb-4 text-white">> Security Researcher (1.6 Yrs Exp)</p>
+    <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl">
+        <div class="bg-gray-800 p-3 flex gap-2 border-b border-gray-700">
+            <div class="terminal-dot bg-red-mac"></div>
+            <div class="terminal-dot bg-yellow-mac"></div>
+            <div class="terminal-dot bg-green-mac"></div>
+        </div>
+        <div class="p-6 font-mono text-sm h-64 overflow-y-auto bg-gray-900" id="terminal-content">
+        </div>
+    </div>
+
+    <script>
+        const terminalLines = [
+            { text: "yuth@lab:~$ whoami", class: "text-blue-400 font-bold" },
+            { text: "> Security Researcher (1.6 Yrs Exp)", class: "text-white mb-4" },
+            { text: "yuth@lab:~$ cat mission.txt", class: "text-blue-400 font-bold" },
+            { text: "> Securing video infrastructure & blocking KernelSU exploits.", class: "text-white mb-4" },
+            { text: "yuth@lab:~$ ./run_scan.sh -A myapp.apk", class: "text-blue-400 font-bold" },
+            { text: "> Scanning for vulnerabilities...", class: "text-yellow-300 animate-pulse" },
+            { text: "[ALERT] Rooted device detected (Magisk/Su)", class: "text-red-400 mt-2" },
+            { text: "[INFO] Patching classes.dex...", class: "text-gray-400" },
+            { text: "[SUCCESS] Application Secured.", class: "text-green-500 font-bold mt-4" }
+        ];
+
+        const terminalBox = document.getElementById('terminal-content');
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex >= terminalLines.length) return; 
+
+            const lineData = terminalLines[lineIndex];
+            const p = document.createElement('p');
+            p.className = lineData.class;
+            terminalBox.appendChild(p);
+
+            let charIndex = 0;
+            const text = lineData.text;
+
+            const typeChar = setInterval(() => {
+                p.textContent += text[charIndex];
+                charIndex++;
                 
-                <p><span class="text-blue-400">yuth@lab</span>:<span class="text-blue-200">~</span>$ cat mission.txt</p>
-                <p class="mb-4 text-white">> Securing video infrastructure & blocking KernelSU exploits.</p>
+                terminalBox.scrollTop = terminalBox.scrollHeight;
 
-                <p><span class="text-blue-400">yuth@lab</span>:<span class="text-blue-200">~</span>$ ./run_scan.sh -A myapp.apk</p>
-                <p class="text-yellow-300 animate-pulse">> Scanning for vulnerabilities...</p>
-                <p class="text-gray-500 mt-2">[INFO] Root detection bypass found...</p>
-                <p class="text-gray-500">[INFO] Patching classes.dex...</p>
-                <p class="text-green-500 mt-2">[SUCCESS] Application Secured.</p>
-            </div>
-        </div>
-    </header>
+                if (charIndex === text.length) {
+                    clearInterval(typeChar);
+                    lineIndex++;
+                    setTimeout(typeLine, 400); 
+                }
+            }, 20); 
+        }
+
+        window.onload = typeLine;
+    </script>
+</header>
 
     <section id="projects" class="mb-32 pt-12">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
