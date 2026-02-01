@@ -78,12 +78,12 @@
             { text: "yuth@lab:~$ whoami", class: "text-blue-400 font-bold" },
             { text: "> Security Researcher (1.6 Yrs Exp)", class: "text-white mb-4" },
             { text: "yuth@lab:~$ cat mission.txt", class: "text-blue-400 font-bold" },
-            { text: "> Securing video infrastructure & blocking KernelSU exploits.", class: "text-white mb-4" },
+            { text: "> Researching real-world threats to video apps,focused on superuser binaries and runtime tampering", class: "text-white mb-4" },
             { text: "yuth@lab:~$ ./run_scan.sh -A myapp.apk", class: "text-blue-400 font-bold" },
-            { text: "> Scanning for vulnerabilities...", class: "text-yellow-300 animate-pulse" },
-            { text: "[ALERT] Rooted device detected (Magisk/Su)", class: "text-red-400 mt-2" },
-            { text: "[INFO] Patching classes.dex...", class: "text-gray-400" },
-            { text: "[SUCCESS] Application Secured.", class: "text-green-500 font-bold mt-4" }
+            { text: "> Analyzing APK & native libs...", class: "text-yellow-300 animate-pulse" },
+            { text: "[ALERT] Privileged execution detected (su binary present)", class: "text-red-400 mt-2" },
+            { text: "[INFO] Validating DEX ↔ JNI trust boundaries", class: "text-gray-400" },
+            { text: "[SUCCESS] Root-based exploit paths mitigated", class: "text-green-500 font-bold mt-4" }
         ];
 
         const terminalBox = document.getElementById('terminal-content');
@@ -183,11 +183,16 @@
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Android Studio</div>
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Burp Suite</div>
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Frida</div>
-            <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Postman</div>
+            <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Objection</div>
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">ADB</div>
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Wireshark</div>
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Python</div>
             <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Bash Scripting</div>
+            <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">APKTool</div>
+            <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">JADX</div>
+            <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">mitmproxy</div>
+            <div class="p-4 border-2 border-black bg-white text-center font-bold hover:bg-black hover:text-white transition">Bash Scripting</div>
+
         </div>
     </section>
 
