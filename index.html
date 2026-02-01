@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-86ZD46R5CD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-86ZD46R5CD');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Researcher | Mobile App Security</title>
@@ -11,8 +19,8 @@
     <meta property="og:url" content="https://yuth-code.github.io/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="icon" href="https://fav.farm/🛡️" />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
@@ -27,18 +35,20 @@
         .bg-red-mac { background-color: #ff5f56; }
         .bg-yellow-mac { background-color: #ffbd2e; }
         .bg-green-mac { background-color: #27c93f; }
-        
-        /* Custom Scrollbar for terminal */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+        /* 2. New Blinking Cursor Animation */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .cursor-blink { animation: blink 1s step-end infinite; display: inline-block; font-weight: bold; }
     </style>
 </head>
 <body class="p-4 md:p-8 min-h-screen flex flex-col max-w-7xl mx-auto">
     <nav class="sticky top-0 z-50 bg-[#f3f4ef] py-4 border-b-4 border-black mb-12 flex justify-between items-center">
         <div class="text-xl md:text-2xl font-bold tracking-tighter flex items-center gap-2">
             <span class="bg-black text-white px-2 py-1 text-sm md:text-base">ROOT</span>
-            <span>~/yuth-code</span>
+            <span>~/yuth-code<span class="cursor-blink text-green-600">_</span></span>
         </div>
-        
+
         <div class="hidden md:flex space-x-8 font-bold text-sm">
             <a href="#about" class="hover:underline decoration-2 underline-offset-4">./bio.md</a>
             <a href="#projects" class="hover:underline decoration-2 underline-offset-4 text-blue-700">./projects/</a>
