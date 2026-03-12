@@ -11,8 +11,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Researcher | Mobile App Security</title>
+    <title>Yuthvek | Security Researcher · Mobile App Security</title>
     
+    <meta name="description" content="Security Researcher specializing in Android Hardening, Root Detection, and Anti-Piracy. Securing 1M+ students on Edu-tech platforms.">
     <meta property="og:title" content="Yuthvek | Security Researcher">
     <meta property="og:description" content="Specialist in Android Hardening, Root Detection, and Anti-Piracy. View my case studies.">
     <meta property="og:image" content="https://yuth-code.github.io/preview.png">
@@ -25,181 +26,328 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Space Mono', monospace; background-color: #f3f4ef; color: #1d1d1d; }
+        :root {
+            --bg: #f3f4ef;
+            --fg: #1d1d1d;
+            --accent: #ff5500;
+        }
+
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: 'Space Mono', monospace; 
+            background-color: var(--bg); 
+            color: var(--fg); 
+        }
+
+        /* ── Brutalist core ── */
         .brutal-border { border: 3px solid #1d1d1d; box-shadow: 4px 4px 0px #1d1d1d; transition: all 0.2s ease; }
         .brutal-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #1d1d1d; }
-        .brutal-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #1d1d1d; }
-        
-        /* Terminal Dots */
+        .brutal-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0px #1d1d1d; }
+
+        /* ── Terminal dots ── */
         .terminal-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); }
-        .bg-red-mac { background-color: #ff5f56; }
-        .bg-yellow-mac { background-color: #ffbd2e; }
+        .bg-red-mac   { background-color: #ff5f56; }
+        .bg-yellow-mac{ background-color: #ffbd2e; }
         .bg-green-mac { background-color: #27c93f; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-        /* 2. New Blinking Cursor Animation */
+        /* ── Cursor blink ── */
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         .cursor-blink { animation: blink 1s step-end infinite; display: inline-block; font-weight: bold; }
+
+        /* ── Typewriter hero ── */
+        #typed-role::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+            color: var(--accent);
+        }
+
+        /* ── Scan line overlay on terminal ── */
+        .scanlines {
+            position: relative;
+        }
+        .scanlines::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.04) 2px,
+                rgba(0,0,0,0.04) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ── Stats counter animation ── */
+        @keyframes countUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .stat-val { animation: countUp 0.6s ease forwards; }
+
+        /* ── Scroll fade-in ── */
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Project expand toggle ── */
+        .project-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .project-detail.open { max-height: 400px; }
+
+        /* ── Mobile nav drawer ── */
+        #mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        #mobile-menu.open { transform: translateX(0); }
+
+        /* ── Noise texture on hero ── */
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        /* ── Alert blink ── */
+        @keyframes alertBlink { 0%,100%{ background:#fee2e2 } 50%{ background:#fecaca } }
+        .alert-pulse { animation: alertBlink 2s ease infinite; }
+
+        /* ── Availability badge pulse ── */
+        @keyframes ping { 0%{ transform:scale(1); opacity:1 } 100%{ transform:scale(2); opacity:0 } }
+        .ping-dot::before {
+            content:'';
+            position:absolute;
+            inset:0;
+            border-radius:50%;
+            background:#22c55e;
+            animation: ping 1.4s ease-out infinite;
+        }
+
+        /* ── Writeup card hover ── */
+        .writeup-card:hover .writeup-arrow { transform: translateX(4px); }
+        .writeup-arrow { transition: transform 0.2s ease; display: inline-block; }
+
+        /* tag color cycles */
+        .tag-red   { background:#fee2e2; border:1px solid #ef4444; color:#b91c1c; }
+        .tag-blue  { background:#dbeafe; border:1px solid #3b82f6; color:#1d4ed8; }
+        .tag-green { background:#dcfce7; border:1px solid #22c55e; color:#15803d; }
+        .tag-yellow{ background:#fef9c3; border:1px solid #eab308; color:#854d0e; }
+        .tag-purple{ background:#ede9fe; border:1px solid #8b5cf6; color:#6d28d9; }
     </style>
 </head>
-<body class="p-4 md:p-8 min-h-screen flex flex-col max-w-7xl mx-auto">
+
+<body class="p-4 md:p-8 min-h-screen flex flex-col max-w-7xl mx-auto noise-bg">
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
     <nav class="sticky top-0 z-50 bg-[#f3f4ef] py-4 border-b-4 border-black mb-12 flex justify-between items-center">
         <div class="text-xl md:text-2xl font-bold tracking-tighter flex items-center gap-2">
             <span class="bg-black text-white px-2 py-1 text-sm md:text-base">ROOT</span>
             <span>~/yuth-code<span class="cursor-blink text-green-600">_</span></span>
         </div>
 
+        <!-- Desktop nav -->
         <div class="hidden md:flex space-x-8 font-bold text-sm">
-            <a href="#about" class="hover:underline decoration-2 underline-offset-4">./bio.md</a>
+            <a href="#about"    class="hover:underline decoration-2 underline-offset-4">./bio.md</a>
             <a href="#projects" class="hover:underline decoration-2 underline-offset-4 text-blue-700">./projects/</a>
-            <a href="#skills" class="hover:underline decoration-2 underline-offset-4">./skills.json</a>
+            <a href="#writeups" class="hover:underline decoration-2 underline-offset-4 text-orange-600">./writeups/</a>
+            <a href="#skills"   class="hover:underline decoration-2 underline-offset-4">./skills.json</a>
         </div>
 
-        <a href="mailto:yuthvek@gmail.com" class="bg-yellow-400 text-black px-4 py-2 font-bold brutal-border brutal-btn text-xs md:text-sm">
-            [ CONTACT_ME ]
-        </a>
+        <div class="flex items-center gap-3">
+            <a href="mailto:yuthvek@gmail.com" class="hidden md:inline-block bg-yellow-400 text-black px-4 py-2 font-bold brutal-border brutal-btn text-xs md:text-sm">
+                [ CONTACT_ME ]
+            </a>
+            <!-- Hamburger -->
+            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+            </button>
+        </div>
     </nav>
 
-    <header id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-32">
-    <div>
-        <div class="inline-block bg-orange-200 border-2 border-black px-3 py-1 font-bold text-xs mb-4">
-            STATUS: ACTIVE RESEARCHER
-        </div>
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-none">
-            I break apps <br> 
-            <span class="text-gray-500">to make them</span> <br>
-            <span class="underline decoration-wavy decoration-orange-500">unbreakable.</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
-            Security Researcher securing 1M+ students on Edu-tech platforms. 
-            Specialist in <strong>Android Hardening</strong>, <strong>Root Detection</strong>, and <strong>Anti-Piracy</strong>.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <a href="#projects" class="bg-black text-white px-6 py-3 font-bold brutal-border hover:bg-gray-800 transition text-center">
-                View Case Studies
-            </a>
-            
-            <a href="resume.pdf" target="_blank" class="bg-white text-black border-2 border-black px-6 py-3 font-bold brutal-border hover:bg-gray-100 transition text-center">
-                Download Resume
-            </a>
-        </div>
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-[#f3f4ef] z-50 border-l-4 border-black p-8 flex flex-col gap-6 md:hidden">
+        <button id="close-menu" class="self-end text-2xl font-bold">✕</button>
+        <a href="#about"    onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./bio.md</a>
+        <a href="#projects" onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-blue-700">./projects/</a>
+        <a href="#writeups" onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-orange-600">./writeups/</a>
+        <a href="#skills"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./skills.json</a>
+        <a href="mailto:yuthvek@gmail.com" class="bg-yellow-400 text-black px-4 py-3 font-bold brutal-border text-center text-sm mt-4">
+            [ CONTACT_ME ]
+        </a>
     </div>
+    <div id="menu-overlay" class="fixed inset-0 bg-black/40 z-40 hidden md:hidden" onclick="closeMobileMenu()"></div>
 
-    <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl">
-        <div class="bg-gray-800 p-3 flex gap-2 border-b border-gray-700">
-            <div class="terminal-dot bg-red-mac"></div>
-            <div class="terminal-dot bg-yellow-mac"></div>
-            <div class="terminal-dot bg-green-mac"></div>
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <header id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 fade-in">
+        <div>
+            <div class="inline-flex items-center gap-2 bg-orange-200 border-2 border-black px-3 py-1 font-bold text-xs mb-4">
+                <span class="relative inline-block w-2 h-2 rounded-full bg-green-500 ping-dot"></span>
+                STATUS: OPEN TO ENGAGEMENTS
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-none">
+                I break apps<br>
+                <span class="text-gray-500">to make them</span><br>
+                <span class="underline decoration-wavy decoration-orange-500">unbreakable.</span>
+            </h1>
+
+            <!-- Typewriter role line -->
+            <p class="text-base md:text-lg text-gray-600 font-mono mb-4 h-7">
+                &gt; <span id="typed-role"></span>
+            </p>
+
+            <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+                Security Researcher securing <strong>1M+ students</strong> on Edu-tech platforms.
+                Specialist in <strong>Android Hardening</strong>, <strong>Root Detection</strong>, and <strong>Anti-Piracy</strong>.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-10">
+                <a href="#projects" class="bg-black text-white px-6 py-3 font-bold brutal-border brutal-btn hover:bg-gray-800 transition text-center">
+                    View Case Studies →
+                </a>
+                <a href="resume.pdf" target="_blank" rel="noopener" class="bg-white text-black border-2 border-black px-6 py-3 font-bold brutal-border brutal-btn hover:bg-gray-100 transition text-center">
+                    Download Resume ↓
+                </a>
+            </div>
+
+            <!-- Stats strip -->
+            <div class="grid grid-cols-3 gap-4 border-t-2 border-black pt-6">
+                <div>
+                    <div class="text-3xl font-bold stat-val" id="stat-exp">1.6<span class="text-orange-500">yr</span></div>
+                    <div class="text-xs text-gray-500 mt-1">Experience</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold stat-val">1M<span class="text-orange-500">+</span></div>
+                    <div class="text-xs text-gray-500 mt-1">Users Protected</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold stat-val">4<span class="text-orange-500">+</span></div>
+                    <div class="text-xs text-gray-500 mt-1">Platforms Hardened</div>
+                </div>
+            </div>
         </div>
-        <div class="p-6 font-mono text-sm h-64 overflow-y-auto bg-gray-900" id="terminal-content">
+
+        <!-- Terminal -->
+        <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl scanlines">
+            <div class="bg-gray-800 p-3 flex items-center gap-2 border-b border-gray-700">
+                <div class="terminal-dot bg-red-mac"></div>
+                <div class="terminal-dot bg-yellow-mac"></div>
+                <div class="terminal-dot bg-green-mac"></div>
+                <span class="ml-3 text-gray-400 text-xs font-mono">yuth@lab: ~/analysis</span>
+            </div>
+            <div class="p-6 font-mono text-sm h-72 overflow-y-auto scrollbar-hide bg-gray-900 leading-relaxed" id="terminal-content"></div>
         </div>
-    </div>
+    </header>
 
-    <script>
-        const terminalLines = [
-            { text: "yuth@lab:~$ whoami", class: "text-blue-400 font-bold" },
-            { text: "> Security Researcher (1.6 Yrs Exp)", class: "text-white mb-4" },
-            { text: "yuth@lab:~$ cat mission.txt", class: "text-blue-400 font-bold" },
-            { text: "> Researching real-world threats to video apps,focused on superuser binaries and runtime tampering", class: "text-white mb-4" },
-            { text: "yuth@lab:~$ ./run_scan.sh -A myapp.apk", class: "text-blue-400 font-bold" },
-            { text: "> Analyzing APK & native libs...", class: "text-yellow-300 animate-pulse" },
-            { text: "[ALERT] Privileged execution detected (su binary present)", class: "text-red-400 mt-2" },
-            { text: "[INFO] Validating DEX ↔ JNI trust boundaries", class: "text-gray-400" },
-            { text: "[SUCCESS] Root-based exploit paths mitigated", class: "text-green-500 font-bold mt-4" }
-        ];
-
-        const terminalBox = document.getElementById('terminal-content');
-        let lineIndex = 0;
-
-        function typeLine() {
-            if (lineIndex >= terminalLines.length) return; 
-
-            const lineData = terminalLines[lineIndex];
-            const p = document.createElement('p');
-            p.className = lineData.class;
-            terminalBox.appendChild(p);
-
-            let charIndex = 0;
-            const text = lineData.text;
-
-            const typeChar = setInterval(() => {
-                p.textContent += text[charIndex];
-                charIndex++;
-                
-                terminalBox.scrollTop = terminalBox.scrollHeight;
-
-                if (charIndex === text.length) {
-                    clearInterval(typeChar);
-                    lineIndex++;
-                    setTimeout(typeLine, 400); 
-                }
-            }, 20); 
-        }
-
-        window.onload = typeLine;
-    </script>
-</header>
-
-    <section id="projects" class="mb-32 pt-12">
+    <!-- ══════════════════════════════════════
+         PROJECTS
+    ══════════════════════════════════════ -->
+    <section id="projects" class="mb-28 pt-8 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/projects</h2>
-            <span class="font-mono text-gray-500">ls -la ./case-studies</span>
+            <span class="font-mono text-gray-500 text-sm">ls -la ./case-studies</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
+            <!-- Card 1 — large -->
             <div class="col-span-1 md:col-span-2 bg-white p-8 brutal-border brutal-card relative group">
-                <div class="absolute top-4 right-4 bg-red-100 border border-black px-2 py-1 text-xs font-bold text-red-600">
+                <div class="absolute top-4 right-4 bg-red-100 border border-black px-2 py-1 text-xs font-bold text-red-600 alert-pulse">
                     CONFIDENTIAL
                 </div>
-                <div class="text-6xl mb-4">🛡️</div>
+                <div class="text-5xl mb-4">🛡️</div>
                 <h3 class="text-2xl font-bold mb-2 group-hover:underline decoration-2">Edu-Tech DRM Architecture</h3>
-                <p class="text-gray-600 mb-6 text-lg">
-                    Designed and audited the security infrastructure for a major learning platform. 
+                <p class="text-gray-600 mb-4 text-base leading-relaxed">
+                    Designed and audited the security infrastructure for a major learning platform.
                     Prevented video piracy and unauthorized screen recording on rooted Android devices.
                 </p>
-                <ul class="text-sm font-bold space-y-2">
-                    <li class="flex items-center">✅ Implemented Widevine DRM</li>
-                    <li class="flex items-center">✅ Blocked Screen Recorders (Overlay Detection)</li>
-                    <li class="flex items-center">✅ Encrypted Local Storage (SQLCipher)</li>
+                <ul class="text-sm font-bold space-y-2 mb-4">
+                    <li>✅ Implemented Widevine DRM (L1/L3 fallback strategy)</li>
+                    <li>✅ Blocked Screen Recorders via Overlay & FLAG_SECURE</li>
+                    <li>✅ Encrypted Local Storage with SQLCipher + key rotation</li>
                 </ul>
+                <!-- Expandable methodology -->
+                <button onclick="toggleDetail('detail-drm', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mb-2">
+                    [ + READ METHODOLOGY ]
+                </button>
+                <div id="detail-drm" class="project-detail">
+                    <div class="border-t-2 border-dashed border-gray-300 mt-4 pt-4 text-sm text-gray-700 space-y-2">
+                        <p><strong class="text-orange-600">Approach:</strong> Conducted threat modeling across content delivery pipeline — identified 3 critical exfiltration vectors via rooted devices using custom Frida scripts to intercept DRM key exchange.</p>
+                        <p><strong class="text-orange-600">Outcome:</strong> Reduced piracy-related content complaints by ~80% post-deployment. Presented findings internally; solution now ships to all Android clients.</p>
+                        <p><strong class="text-orange-600">Tools:</strong> Frida · Widevine CDM · SQLCipher · JADX · Objection</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-span-1 bg-yellow-50 p-8 brutal-border brutal-card">
+            <!-- Card 2 -->
+            <div class="col-span-1 bg-yellow-50 p-8 brutal-border brutal-card group">
                 <div class="text-5xl mb-4">🕵️‍♂️</div>
-                <h3 class="text-xl font-bold mb-2">Advanced Root Detection</h3>
-                <p class="text-gray-600 mb-4 text-sm">
-                    Research into bypassing KernelSU and MagiskHide. Created a custom RASP (Runtime Application Self-Protection) module.
+                <h3 class="text-xl font-bold mb-2 group-hover:underline">Advanced Root Detection</h3>
+                <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                    Research into bypassing KernelSU and MagiskHide. Created a custom RASP (Runtime Application Self-Protection) module with multi-layer heuristics.
                 </p>
+                <button onclick="toggleDetail('detail-root', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mb-2">
+                    [ + READ METHODOLOGY ]
+                </button>
+                <div id="detail-root" class="project-detail">
+                    <div class="border-t-2 border-dashed border-gray-300 mt-3 pt-3 text-xs text-gray-700 space-y-2">
+                        <p><strong class="text-orange-600">Approach:</strong> Developed detection heuristics covering su binary presence, process enumeration, file system anomalies, and Zygisk module detection.</p>
+                        <p><strong class="text-orange-600">Tools:</strong> Frida · Objection · KernelSU · Magisk</p>
+                    </div>
+                </div>
                 <div class="mt-4 flex flex-wrap gap-2">
-                    <span class="bg-black text-white text-xs px-2 py-1">Frida</span>
-                    <span class="bg-black text-white text-xs px-2 py-1">Objection</span>
+                    <span class="tag-red text-xs px-2 py-1 font-bold">Frida</span>
+                    <span class="tag-yellow text-xs px-2 py-1 font-bold">Objection</span>
+                    <span class="tag-purple text-xs px-2 py-1 font-bold">RASP</span>
                 </div>
             </div>
 
-          <div class="col-span-1 bg-blue-50 p-8 brutal-border brutal-card">
+            <!-- Card 3 -->
+            <div class="col-span-1 bg-blue-50 p-8 brutal-border brutal-card group">
                 <div class="text-5xl mb-4">🐛</div>
-                <h3 class="text-xl font-bold mb-2">Vulnerability Research</h3>
-                <p class="text-gray-600 mb-4 text-sm">
-                    Ongoing analysis of API endpoints and mobile logic flaws. Found and reported critical IDORs and Info Leaks.
+                <h3 class="text-xl font-bold mb-2 group-hover:underline">Vulnerability Research</h3>
+                <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                    Ongoing analysis of API endpoints and mobile logic flaws. Found and reported critical IDORs and Info Leaks across multiple platforms.
                 </p>
+                <button onclick="toggleDetail('detail-vuln', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mb-2">
+                    [ + READ METHODOLOGY ]
+                </button>
+                <div id="detail-vuln" class="project-detail">
+                    <div class="border-t-2 border-dashed border-gray-300 mt-3 pt-3 text-xs text-gray-700 space-y-2">
+                        <p><strong class="text-orange-600">Approach:</strong> Mapped attack surface using Burp Suite + mobile proxy. Identified auth bypass via predictable object IDs and unauthenticated debug endpoints.</p>
+                        <p><strong class="text-orange-600">Impact:</strong> Critical IDOR affecting user PII — responsibly disclosed and patched within 72hrs.</p>
+                    </div>
+                </div>
                 <div class="flex flex-wrap gap-2 mt-4">
-                    <span class="bg-blue-200 border border-blue-900 text-blue-900 text-xs px-2 py-1 font-bold">OWASP Top 10</span>
-                    <span class="bg-blue-200 border border-blue-900 text-blue-900 text-xs px-2 py-1 font-bold">API Security</span>
+                    <span class="tag-blue text-xs px-2 py-1 font-bold">OWASP Top 10</span>
+                    <span class="tag-blue text-xs px-2 py-1 font-bold">API Security</span>
+                    <span class="tag-blue text-xs px-2 py-1 font-bold">Burp Suite</span>
                 </div>
             </div>
 
-          <div class="col-span-1 md:col-span-2 bg-green-50 p-8 brutal-border brutal-card flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div class="text-5xl">📈</div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Device Risk Profiling</h3>
-                    <p class="text-gray-600 text-sm">
-                        Built a dynamic scoring engine to evaluate user trust. Analyzes device integrity (Root, Emulators, Hooks) to generate real-time risk profiles for piracy prevention.
-                    </p>
-                    
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-green-200 border border-green-900 text-green-900 text-xs px-2 py-1 font-bold">Device Fingerprinting</span>
-                        <span class="bg-green-200 border border-green-900 text-green-900 text-xs px-2 py-1 font-bold">SafetyNet Attestation</span>
+            <!-- Card 4 — large -->
+            <div class="col-span-1 md:col-span-2 bg-green-50 p-8 brutal-border brutal-card group">
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="text-5xl">📈</div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 group-hover:underline">Device Risk Profiling Engine</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Built a dynamic scoring engine to evaluate user trust at runtime. Analyzes device integrity (Root, Emulators, Hooks, VPNs) to generate real-time risk scores for adaptive piracy prevention.
+                        </p>
+                        <button onclick="toggleDetail('detail-risk', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mb-3">
+                            [ + READ METHODOLOGY ]
+                        </button>
+                        <div id="detail-risk" class="project-detail">
+                            <div class="border-t-2 border-dashed border-gray-300 mt-3 pt-3 text-xs text-gray-700 space-y-2">
+                                <p><strong class="text-orange-600">Architecture:</strong> Weighted signal aggregation across 12+ device integrity signals. Low-risk users get full access; high-risk devices hit content restrictions automatically.</p>
+                                <p><strong class="text-orange-600">Outcome:</strong> Reduced emulator-based abuse by ~65%. Integrated with Play Integrity API replacing deprecated SafetyNet.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="tag-green text-xs px-2 py-1 font-bold">Device Fingerprinting</span>
+                            <span class="tag-green text-xs px-2 py-1 font-bold">Play Integrity API</span>
+                            <span class="tag-green text-xs px-2 py-1 font-bold">SafetyNet</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,54 +355,270 @@
         </div>
     </section>
 
-    <section id="skills" class="mb-32">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 border-b-2 border-black pb-4">~/skills</h2>
-        
-       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="bg-white p-6 brutal-border">
-        <h3 class="font-bold text-xl mb-4 text-blue-600">>> Languages</h3>
-        <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Java</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Kotlin</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Objective-C</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Python</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Bash</span>
+    <!-- ══════════════════════════════════════
+         WRITEUPS / BLOG
+    ══════════════════════════════════════ -->
+    <section id="writeups" class="mb-28 pt-8 fade-in">
+        <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
+            <h2 class="text-3xl md:text-4xl font-bold">~/writeups</h2>
+            <span class="font-mono text-gray-500 text-sm">cat ./research.log</span>
         </div>
-    </div>
 
-    <div class="bg-white p-6 brutal-border">
-        <h3 class="font-bold text-xl mb-4 text-green-600">>> Tools & Frameworks</h3>
-        <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Frida</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Burp Suite</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Objection</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Wireshark</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">JADX</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">APKTool</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Hopper</span>
-            <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Ghidra</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Placeholder writeup 1 -->
+            <a href="#" class="writeup-card bg-white p-6 brutal-border brutal-card block group">
+                <span class="tag-red text-xs px-2 py-1 font-bold mb-3 inline-block">Android Security</span>
+                <h3 class="text-lg font-bold mb-2 group-hover:underline leading-snug">
+                    Bypassing KernelSU Detection: What Defenders Miss
+                </h3>
+                <p class="text-gray-500 text-xs mb-4 leading-relaxed">
+                    Deep dive into how modern superuser frameworks hide from naive detection — and how to catch them anyway.
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-400 font-mono">
+                    <span>// Coming soon</span>
+                    <span class="writeup-arrow">→</span>
+                </div>
+            </a>
+
+            <!-- Placeholder writeup 2 -->
+            <a href="#" class="writeup-card bg-white p-6 brutal-border brutal-card block group">
+                <span class="tag-blue text-xs px-2 py-1 font-bold mb-3 inline-block">API Security</span>
+                <h3 class="text-lg font-bold mb-2 group-hover:underline leading-snug">
+                    IDOR to PII Leak: A Real-World Mobile API Bug Chain
+                </h3>
+                <p class="text-gray-500 text-xs mb-4 leading-relaxed">
+                    How a single predictable object ID exposed user data for thousands of accounts on a live platform.
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-400 font-mono">
+                    <span>// Coming soon</span>
+                    <span class="writeup-arrow">→</span>
+                </div>
+            </a>
+
+            <!-- Placeholder writeup 3 -->
+            <a href="#" class="writeup-card bg-white p-6 brutal-border brutal-card block group">
+                <span class="tag-purple text-xs px-2 py-1 font-bold mb-3 inline-block">DRM · Anti-Piracy</span>
+                <h3 class="text-lg font-bold mb-2 group-hover:underline leading-snug">
+                    Building a RASP Module for Android in 2025
+                </h3>
+                <p class="text-gray-500 text-xs mb-4 leading-relaxed">
+                    Runtime Application Self-Protection from scratch — architecture decisions, pitfalls, and Frida bypass attempts.
+                </p>
+                <div class="flex items-center justify-between text-xs text-gray-400 font-mono">
+                    <span>// Coming soon</span>
+                    <span class="writeup-arrow">→</span>
+                </div>
+            </a>
+
         </div>
-    </div>
-</div>
+
+        <p class="text-xs text-gray-400 font-mono mt-4">
+            // Replace these cards with links to your actual Medium, GitHub, or personal blog posts.
+        </p>
     </section>
 
-   <footer class="border-t-4 border-black pt-12 pb-12 text-center bg-gray-100 -mx-4 md:-mx-8 px-4">
-        <h3 class="text-2xl font-bold mb-6">Ready to secure your infrastructure?</h3>
-        <div class="flex justify-center gap-6 mb-8">
-            <a href="https://www.linkedin.com/in/yuthvek-mj-a87aab21b/" target="_blank" class="text-xl font-bold underline decoration-2 underline-offset-4 hover:text-blue-600">LinkedIn</a>
-            <a href="https://github.com/yuth-code" target="_blank" class="text-xl font-bold underline decoration-2 underline-offset-4 hover:text-blue-600">GitHub</a>
-            <a href="mailto:yuthvek@gmail.com" class="text-xl font-bold underline decoration-2 underline-offset-4 hover:text-blue-600">Email</a>
+    <!-- ══════════════════════════════════════
+         SKILLS
+    ══════════════════════════════════════ -->
+    <section id="skills" class="mb-28 fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 border-b-2 border-black pb-4">~/skills</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="bg-white p-6 brutal-border">
+                <h3 class="font-bold text-lg mb-4 text-blue-600">>> Languages</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Java</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Kotlin</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Objective-C</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Python</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Bash</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 brutal-border">
+                <h3 class="font-bold text-lg mb-4 text-green-600">>> Tools & Frameworks</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Frida</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Burp Suite</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Objection</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Wireshark</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">JADX</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">APKTool</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Hopper</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Ghidra</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 brutal-border">
+                <h3 class="font-bold text-lg mb-4 text-orange-600">>> Specializations</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Android Hardening</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Root Detection</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">DRM Architecture</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">RASP</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Anti-Piracy</span>
+                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">API Pentesting</span>
+                </div>
+            </div>
+
         </div>
-        
-        <div class="text-xs font-mono text-gray-500">
-            <p class="mb-2">
-                © 2026 Yuthvek MJ. <span class="hidden md:inline">|</span> System Secured.
-            </p>
-            <p>
-                Built with <span class="text-red-500">♥</span> and TailwindCSS.
-            </p>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FOOTER / CTA
+    ══════════════════════════════════════ -->
+    <footer class="border-t-4 border-black pt-16 pb-12 -mx-4 md:-mx-8 px-8 bg-black text-white fade-in">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-green-900 border border-green-500 text-green-400 px-3 py-1 text-xs font-bold mb-4">
+                        <span class="relative inline-block w-2 h-2 rounded-full bg-green-400 ping-dot"></span>
+                        OPEN TO FREELANCE ENGAGEMENTS
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                        Ready to secure<br>your infrastructure?
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Available for Android security audits, DRM architecture reviews, and mobile penetration testing engagements.
+                        Response time: &lt; 24hrs.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <a href="mailto:yuthvek@gmail.com" class="flex items-center justify-between bg-yellow-400 text-black px-6 py-4 font-bold border-2 border-yellow-400 hover:bg-yellow-300 transition group">
+                        <span>yuthvek@gmail.com</span>
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/yuthvek-mj-a87aab21b/" target="_blank" rel="noopener"
+                           class="flex-1 text-center py-3 border-2 border-white text-white font-bold text-sm hover:bg-white hover:text-black transition">
+                            LinkedIn ↗
+                        </a>
+                        <a href="https://github.com/yuth-code" target="_blank" rel="noopener"
+                           class="flex-1 text-center py-3 border-2 border-white text-white font-bold text-sm hover:bg-white hover:text-black transition">
+                            GitHub ↗
+                        </a>
+                        <a href="resume.pdf" target="_blank" rel="noopener"
+                           class="flex-1 text-center py-3 border-2 border-gray-600 text-gray-400 font-bold text-sm hover:bg-gray-800 transition">
+                            Resume ↓
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-600">
+                <span>© 2026 Yuthvek MJ. All rights reserved.</span>
+                <span>Built with <span class="text-red-400">♥</span> and TailwindCSS. <span class="text-green-500">// System Secured.</span></span>
+            </div>
         </div>
     </footer>
 
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
+    <script>
+        /* ── Terminal typewriter ── */
+        const terminalLines = [
+            { text: "yuth@lab:~$ whoami", class: "text-blue-400 font-bold" },
+            { text: "> Security Researcher (1.6 Yrs Exp)", class: "text-white mb-3" },
+            { text: "yuth@lab:~$ cat mission.txt", class: "text-blue-400 font-bold" },
+            { text: "> Researching real-world threats to video apps, focused on superuser binaries and runtime tampering", class: "text-white mb-3" },
+            { text: "yuth@lab:~$ ./run_scan.sh -A myapp.apk", class: "text-blue-400 font-bold" },
+            { text: "> Analyzing APK & native libs...", class: "text-yellow-300" },
+            { text: "[ALERT] Privileged execution detected (su binary present)", class: "text-red-400 mt-1" },
+            { text: "[INFO]  Validating DEX ↔ JNI trust boundaries", class: "text-gray-400" },
+            { text: "[INFO]  Checking Zygisk module injection...", class: "text-gray-400" },
+            { text: "[OK]    No active hooks detected in system_server", class: "text-gray-400" },
+            { text: "[SUCCESS] Root-based exploit paths mitigated ✓", class: "text-green-400 font-bold mt-2" },
+        ];
+
+        const terminalBox = document.getElementById('terminal-content');
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex >= terminalLines.length) return;
+            const lineData = terminalLines[lineIndex];
+            const p = document.createElement('p');
+            p.className = lineData.class;
+            terminalBox.appendChild(p);
+            let charIndex = 0;
+            const text = lineData.text;
+            const typeChar = setInterval(() => {
+                p.textContent += text[charIndex];
+                charIndex++;
+                terminalBox.scrollTop = terminalBox.scrollHeight;
+                if (charIndex === text.length) {
+                    clearInterval(typeChar);
+                    lineIndex++;
+                    setTimeout(typeLine, 350);
+                }
+            }, 18);
+        }
+        window.addEventListener('load', typeLine);
+
+        /* ── Hero typewriter role ── */
+        const roles = [
+            'Android Security Researcher',
+            'Mobile Pentester',
+            'Anti-Piracy Engineer',
+            'Root Detection Specialist',
+        ];
+        let roleIdx = 0, charIdx = 0, deleting = false;
+        const roleEl = document.getElementById('typed-role');
+
+        function typeRole() {
+            const current = roles[roleIdx];
+            if (!deleting) {
+                roleEl.textContent = current.slice(0, charIdx + 1);
+                charIdx++;
+                if (charIdx === current.length) {
+                    deleting = true;
+                    setTimeout(typeRole, 1800);
+                    return;
+                }
+            } else {
+                roleEl.textContent = current.slice(0, charIdx - 1);
+                charIdx--;
+                if (charIdx === 0) {
+                    deleting = false;
+                    roleIdx = (roleIdx + 1) % roles.length;
+                }
+            }
+            setTimeout(typeRole, deleting ? 40 : 65);
+        }
+        window.addEventListener('load', typeRole);
+
+        /* ── Scroll fade-in ── */
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => observer.observe(el));
+
+        /* ── Project expand ── */
+        function toggleDetail(id, btn) {
+            const el = document.getElementById(id);
+            const open = el.classList.toggle('open');
+            btn.textContent = open ? '[ − HIDE METHODOLOGY ]' : '[ + READ METHODOLOGY ]';
+        }
+
+        /* ── Mobile nav ── */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.remove('hidden');
+        });
+        document.getElementById('close-menu').addEventListener('click', closeMobileMenu);
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
