@@ -148,11 +148,13 @@
         </div>
 
         <!-- Desktop nav -->
-        <div class="hidden md:flex space-x-8 font-bold text-sm">
-            <a href="#about"    class="hover:underline decoration-2 underline-offset-4">./bio.md</a>
-            <a href="#projects" class="hover:underline decoration-2 underline-offset-4 text-blue-700">./projects/</a>
-            <a href="#writeups" class="hover:underline decoration-2 underline-offset-4 text-orange-600">./writeups/</a>
-            <a href="#skills"   class="hover:underline decoration-2 underline-offset-4">./skills.json</a>
+        <div class="hidden md:flex space-x-6 font-bold text-sm">
+            <a href="#about"      class="hover:underline decoration-2 underline-offset-4">./bio.md</a>
+            <a href="#projects"   class="hover:underline decoration-2 underline-offset-4 text-blue-700">./projects/</a>
+            <a href="#experience" class="hover:underline decoration-2 underline-offset-4">./work.log</a>
+            <a href="#research"   class="hover:underline decoration-2 underline-offset-4 text-green-700">./research/</a>
+            <a href="#writeups"   class="hover:underline decoration-2 underline-offset-4 text-orange-600">./writeups/</a>
+            <a href="#skills"     class="hover:underline decoration-2 underline-offset-4">./skills.json</a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -171,10 +173,12 @@
     <!-- Mobile drawer -->
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-[#f3f4ef] z-50 border-l-4 border-black p-8 flex flex-col gap-6 md:hidden">
         <button id="close-menu" class="self-end text-2xl font-bold">✕</button>
-        <a href="#about"    onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./bio.md</a>
-        <a href="#projects" onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-blue-700">./projects/</a>
-        <a href="#writeups" onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-orange-600">./writeups/</a>
-        <a href="#skills"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./skills.json</a>
+        <a href="#about"      onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./bio.md</a>
+        <a href="#projects"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-blue-700">./projects/</a>
+        <a href="#experience" onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./work.log</a>
+        <a href="#research"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-green-700">./research/</a>
+        <a href="#writeups"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-orange-600">./writeups/</a>
+        <a href="#skills"     onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./skills.json</a>
         <a href="mailto:yuthvek@gmail.com" class="bg-yellow-400 text-black px-4 py-3 font-bold brutal-border text-center text-sm mt-4">
             [ CONTACT_ME ]
         </a>
@@ -186,9 +190,15 @@
     ══════════════════════════════════════ -->
     <header id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 fade-in">
         <div>
-            <div class="inline-flex items-center gap-2 bg-orange-200 border-2 border-black px-3 py-1 font-bold text-xs mb-4">
-                <span class="relative inline-block w-2 h-2 rounded-full bg-green-500 ping-dot"></span>
-                STATUS: OPEN TO ENGAGEMENTS
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 bg-orange-200 border-2 border-black px-3 py-1 font-bold text-xs">
+                    <span class="relative inline-block w-2 h-2 rounded-full bg-green-500 ping-dot"></span>
+                    STATUS: OPEN TO ENGAGEMENTS
+                </span>
+                <a href="https://www.rbln.com/speakers/yuthvek-mj" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-2 bg-black text-white border-2 border-black px-3 py-1 font-bold text-xs hover:bg-gray-800 transition">
+                    🎤 SPEAKING @ RBLN EUROPE 2026 ↗
+                </a>
             </div>
 
             <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-none">
@@ -356,6 +366,120 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         EXPERIENCE
+    ══════════════════════════════════════ -->
+    <section id="experience" class="mb-28 pt-8 fade-in">
+        <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
+            <h2 class="text-3xl md:text-4xl font-bold">~/experience</h2>
+            <span class="font-mono text-gray-500 text-sm">git log --oneline</span>
+        </div>
+
+        <div class="space-y-6">
+
+            <!-- Current role -->
+            <div class="bg-white p-6 md:p-8 brutal-border brutal-card">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold flex flex-wrap items-center gap-2">
+                            Security Researcher II
+                            <span class="bg-blue-100 border-2 border-black text-xs px-2 py-0.5 font-bold">↑ Promoted May 2026</span>
+                            <span class="bg-yellow-300 border-2 border-black text-xs px-2 py-0.5 font-bold">★ Best Employee 2025</span>
+                        </h3>
+                        <p class="text-gray-600 font-bold text-sm mt-1">Dailyrounds / Marrow · Bengaluru</p>
+                    </div>
+                    <span class="font-mono text-xs bg-green-100 border border-black px-3 py-1 self-start whitespace-nowrap">Jun 2025 — Present</span>
+                </div>
+                <ul class="text-sm text-gray-700 space-y-1.5 leading-relaxed">
+                    <li>▹ Own end-to-end security of the DBMCI product — leading security across Android, iOS &amp; web.</li>
+                    <li>▹ Drive SSDLC: threat modeling (STRIDE), secure design reviews, and security sign-off gates at every phase.</li>
+                    <li>▹ In-depth mobile pentesting — Android (APK, ADB, Frida, MobSF) &amp; iOS (IPA, Objection, keychain, runtime).</li>
+                    <li>▹ Lead incident response — investigate breaches, assess impact, and coordinate cross-team remediation.</li>
+                </ul>
+            </div>
+
+            <!-- Junior Risk Analyst -->
+            <div class="bg-white p-6 md:p-8 brutal-border brutal-card">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Junior Risk Analyst</h3>
+                        <p class="text-gray-600 font-bold text-sm mt-1">Dailyrounds / Marrow · Bengaluru</p>
+                    </div>
+                    <span class="font-mono text-xs bg-gray-100 border border-black px-3 py-1 self-start whitespace-nowrap">Aug 2024 — Jun 2025</span>
+                </div>
+                <ul class="text-sm text-gray-700 space-y-1.5 leading-relaxed">
+                    <li>▹ Ran security testing across Android, iOS &amp; web; found and tracked critical vulnerabilities to closure.</li>
+                    <li>▹ Helped embed SSDLC security checkpoints into the product release pipeline.</li>
+                    <li>▹ Performed risk assessments and delivered remediation guidance to engineering teams.</li>
+                </ul>
+            </div>
+
+            <!-- Intern -->
+            <div class="bg-white p-6 md:p-8 brutal-border brutal-card">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Security Research Intern</h3>
+                        <p class="text-gray-600 font-bold text-sm mt-1">Cyber Crime Cell, Tamil Nadu Police · Chennai</p>
+                    </div>
+                    <span class="font-mono text-xs bg-gray-100 border border-black px-3 py-1 self-start whitespace-nowrap">Jun 2023 — Jul 2023</span>
+                </div>
+                <ul class="text-sm text-gray-700 space-y-1.5 leading-relaxed">
+                    <li>▹ Researched mobile and digital threat vectors alongside law-enforcement cybercrime investigators.</li>
+                    <li>▹ Supported digital forensics case workflows and cybersecurity operations.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         RESEARCH & PUBLICATIONS
+    ══════════════════════════════════════ -->
+    <section id="research" class="mb-28 pt-8 fade-in">
+        <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
+            <h2 class="text-3xl md:text-4xl font-bold">~/research</h2>
+            <span class="font-mono text-gray-500 text-sm">cat ./publications.bib</span>
+        </div>
+
+        <!-- Invited talk — featured -->
+        <a href="https://www.rbln.com/speakers/yuthvek-mj" target="_blank" rel="noopener"
+           class="block bg-black text-white p-6 md:p-7 brutal-border brutal-btn mb-6 group">
+            <div class="flex flex-col md:flex-row md:items-center gap-3">
+                <span class="bg-orange-500 text-black px-3 py-1 text-xs font-bold border-2 border-orange-500 self-start whitespace-nowrap">🎤 INVITED SPEAKER</span>
+                <div class="flex-1">
+                    <h3 class="text-lg md:text-xl font-bold group-hover:text-orange-400 transition">"The KernelSU Challenge: Defending App Integrity"</h3>
+                    <p class="text-gray-400 text-sm font-mono mt-1">RBLN Europe 2026 · Amsterdam — defense-in-depth strategies for protecting application integrity against kernel-level rooting frameworks.</p>
+                </div>
+                <span class="font-bold text-orange-500 group-hover:translate-x-1 transition-transform self-start md:self-center whitespace-nowrap">View session ↗</span>
+            </div>
+        </a>
+
+        <!-- Publications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="bg-white p-6 brutal-border brutal-card">
+                <span class="tag-green text-xs px-2 py-1 font-bold mb-3 inline-block">📄 Web of Science Indexed</span>
+                <h3 class="text-lg font-bold mb-2 leading-snug">
+                    Impact of Quantum Computing in Cryptography &amp; Analyzing Business Crimes via OSINT Architecture
+                </h3>
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    Peer-reviewed publication on post-quantum cryptographic risk and OSINT-driven investigation of business crime. Indexed in Web of Science.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 brutal-border brutal-card">
+                <span class="tag-blue text-xs px-2 py-1 font-bold mb-3 inline-block">🎓 Conference Paper</span>
+                <h3 class="text-lg font-bold mb-2 leading-snug">
+                    A Comprehensive Study of OSINT Tools for Cybersecurity in the Indian Environment
+                </h3>
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    Survey of open-source intelligence tooling and its application to cybersecurity — presented at an international conference.
+                </p>
             </div>
 
         </div>
