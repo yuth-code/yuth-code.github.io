@@ -27,8 +27,45 @@
     <meta name="twitter:description" content="Specialist in Android Hardening, Root Detection, and Anti-Piracy. View my case studies.">
     <meta name="twitter:image" content="https://yuth-code.github.io/preview.png">
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yuthvek M J",
+      "jobTitle": "Security Researcher II",
+      "description": "Security researcher specializing in Android and iOS mobile application security, AppSec and SSDLC.",
+      "url": "https://yuth-code.github.io/",
+      "image": "https://yuth-code.github.io/preview.png",
+      "email": "mailto:yuthvek@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/yuthvek-mj-a87aab21b/",
+        "https://github.com/yuth-code"
+      ],
+      "knowsAbout": [
+        "Mobile Application Security",
+        "Android Security",
+        "iOS Security",
+        "Reverse Engineering",
+        "DRM Architecture",
+        "Root Detection",
+        "Application Security",
+        "Threat Modeling",
+        "Digital Forensics"
+      ],
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Kristu Jayanti College" },
+        { "@type": "CollegeOrUniversity", "name": "Sathyabama University" }
+      ]
+    }
+    </script>
+
     <link rel="icon" href="https://fav.farm/🛡️" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -171,6 +208,9 @@
         .tag-yellow{ background:#fef9c3; border:1px solid #eab308; color:#854d0e; }
         .tag-purple{ background:#ede9fe; border:1px solid #8b5cf6; color:#6d28d9; }
     </style>
+
+    <!-- Built with: ./build.sh (Tailwind v3 CLI). Re-run it after adding any new utility class. -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="p-4 md:p-8 min-h-screen flex flex-col max-w-7xl mx-auto noise-bg">
@@ -199,7 +239,7 @@
                 [ CONTACT_ME ]
             </a>
             <!-- Hamburger -->
-            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
                 <span class="block w-6 h-0.5 bg-black"></span>
                 <span class="block w-6 h-0.5 bg-black"></span>
                 <span class="block w-6 h-0.5 bg-black"></span>
@@ -267,15 +307,15 @@
             <div class="grid grid-cols-3 gap-4 border-t-2 border-black pt-6">
                 <div>
                     <div class="text-3xl font-bold stat-val" id="stat-exp">2<span class="text-orange-500">yr</span></div>
-                    <div class="text-xs text-gray-500 mt-1">Experience</div>
+                    <div class="text-xs text-gray-600 mt-1">Experience</div>
                 </div>
                 <div>
                     <div class="text-3xl font-bold stat-val">1M<span class="text-orange-500">+</span></div>
-                    <div class="text-xs text-gray-500 mt-1">Users Protected</div>
+                    <div class="text-xs text-gray-600 mt-1">Users Protected</div>
                 </div>
                 <div>
                     <div class="text-3xl font-bold stat-val">4<span class="text-orange-500">+</span></div>
-                    <div class="text-xs text-gray-500 mt-1">Platforms Hardened</div>
+                    <div class="text-xs text-gray-600 mt-1">Platforms Hardened</div>
                 </div>
             </div>
         </div>
@@ -287,7 +327,7 @@
                 <div class="terminal-dot bg-yellow-mac"></div>
                 <div class="terminal-dot bg-green-mac"></div>
                 <span class="ml-3 text-gray-400 text-xs font-mono">yuth@lab: ~/analysis</span>
-                <span class="ml-auto text-gray-500 text-[10px] font-mono hidden sm:inline">type <span class="text-orange-400">help</span></span>
+                <span class="ml-auto text-gray-400 text-[10px] font-mono hidden sm:inline">type <span class="text-orange-400">help</span></span>
             </div>
             <div class="p-6 font-mono text-sm h-72 overflow-y-auto scrollbar-hide bg-gray-900 leading-relaxed" id="terminal-content"></div>
         </div>
@@ -299,7 +339,7 @@
     <section id="projects" class="mb-28 pt-8 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/projects</h2>
-            <span class="font-mono text-gray-500 text-sm">ls -la ./case-studies</span>
+            <span class="font-mono text-gray-600 text-sm">ls -la ./case-studies</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -458,7 +498,7 @@
     <section id="experience" class="mb-28 pt-8 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/experience</h2>
-            <span class="font-mono text-gray-500 text-sm">git log --oneline</span>
+            <span class="font-mono text-gray-600 text-sm">git log --oneline</span>
         </div>
 
         <div class="space-y-6">
@@ -490,7 +530,7 @@
                                 Security Researcher II
                                 <span class="bg-blue-100 border-2 border-black text-[10px] px-2 py-0.5 font-bold tracking-wide">CURRENT</span>
                             </h4>
-                            <span class="font-mono text-xs text-gray-500 whitespace-nowrap">May 2026 — Present</span>
+                            <span class="font-mono text-xs text-gray-600 whitespace-nowrap">May 2026 — Present</span>
                         </div>
                         <ul class="text-sm text-gray-700 space-y-1.5 leading-relaxed">
                             <li>▹ Own end-to-end security of the DBMCI product — leading security across Android, iOS &amp; web.</li>
@@ -509,7 +549,7 @@
                     <div class="flex-1 pb-7">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-2">
                             <h4 class="font-bold text-lg">Security Researcher</h4>
-                            <span class="font-mono text-xs text-gray-500 whitespace-nowrap">Jun 2025 — May 2026</span>
+                            <span class="font-mono text-xs text-gray-600 whitespace-nowrap">Jun 2025 — May 2026</span>
                         </div>
                         <ul class="text-sm text-gray-700 space-y-1.5 leading-relaxed">
                             <li>▹ Hands-on mobile pentesting — Android (APK, ADB, Frida, MobSF) &amp; iOS (IPA, Objection, keychain, runtime).</li>
@@ -526,7 +566,7 @@
                     <div class="flex-1">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-2">
                             <h4 class="font-bold text-lg">Junior Risk Analyst</h4>
-                            <span class="font-mono text-xs text-gray-500 whitespace-nowrap">Aug 2024 — Jun 2025</span>
+                            <span class="font-mono text-xs text-gray-600 whitespace-nowrap">Aug 2024 — Jun 2025</span>
                         </div>
                         <ul class="text-sm text-gray-700 space-y-1.5 leading-relaxed">
                             <li>▹ Ran security testing across Android, iOS &amp; web; found and tracked critical vulnerabilities to closure.</li>
@@ -560,7 +600,7 @@
     <section id="research" class="mb-28 pt-8 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/research</h2>
-            <span class="font-mono text-gray-500 text-sm">cat ./publications.bib</span>
+            <span class="font-mono text-gray-600 text-sm">cat ./publications.bib</span>
         </div>
 
         <!-- Invited talk — featured -->
@@ -584,7 +624,7 @@
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     Impact of Quantum Computing in Cryptography &amp; Analyzing Business Crimes via OSINT Architecture
                 </h3>
-                <p class="text-gray-500 text-xs leading-relaxed">
+                <p class="text-gray-600 text-xs leading-relaxed">
                     Peer-reviewed publication on post-quantum cryptographic risk and OSINT-driven investigation of business crime. Indexed in Web of Science.
                 </p>
             </div>
@@ -594,7 +634,7 @@
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     A Comprehensive Study of OSINT Tools for Cybersecurity in the Indian Environment
                 </h3>
-                <p class="text-gray-500 text-xs leading-relaxed">
+                <p class="text-gray-600 text-xs leading-relaxed">
                     Survey of open-source intelligence tooling and its application to cybersecurity — presented at an international conference.
                 </p>
             </div>
@@ -608,7 +648,7 @@
     <section id="writeups" class="mb-28 pt-8 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/writeups</h2>
-            <span class="font-mono text-gray-500 text-sm">cat ./research.log</span>
+            <span class="font-mono text-gray-600 text-sm">cat ./research.log</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -620,10 +660,10 @@
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     Bypassing KernelSU Detection: What Defenders Miss
                 </h3>
-                <p class="text-gray-500 text-xs mb-4 leading-relaxed">
+                <p class="text-gray-600 text-xs mb-4 leading-relaxed">
                     Deep dive into how modern superuser frameworks hide from naive detection — and how to catch them anyway.
                 </p>
-                <div class="text-xs text-gray-400 font-mono">
+                <div class="text-xs text-gray-600 font-mono">
                     <span>// drafting — publishing soon</span>
                 </div>
             </div>
@@ -635,10 +675,10 @@
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     IDOR to PII Leak: A Real-World Mobile API Bug Chain
                 </h3>
-                <p class="text-gray-500 text-xs mb-4 leading-relaxed">
+                <p class="text-gray-600 text-xs mb-4 leading-relaxed">
                     How a single predictable object ID exposed user data for thousands of accounts on a live platform.
                 </p>
-                <div class="text-xs text-gray-400 font-mono">
+                <div class="text-xs text-gray-600 font-mono">
                     <span>// drafting — publishing soon</span>
                 </div>
             </div>
@@ -650,17 +690,17 @@
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     Building a RASP Module for Android in 2025
                 </h3>
-                <p class="text-gray-500 text-xs mb-4 leading-relaxed">
+                <p class="text-gray-600 text-xs mb-4 leading-relaxed">
                     Runtime Application Self-Protection from scratch — architecture decisions, pitfalls, and Frida bypass attempts.
                 </p>
-                <div class="text-xs text-gray-400 font-mono">
+                <div class="text-xs text-gray-600 font-mono">
                     <span>// drafting — publishing soon</span>
                 </div>
             </div>
 
         </div>
 
-        <p class="text-xs text-gray-400 font-mono mt-4">
+        <p class="text-xs text-gray-600 font-mono mt-4">
             // 3 writeups in the pipeline — <a href="https://github.com/yuth-code" target="_blank" rel="noopener" class="text-orange-600 underline decoration-2 underline-offset-2 hover:text-orange-700">follow on GitHub</a> for drops.
         </p>
     </section>
@@ -671,7 +711,7 @@
     <section id="skills" class="mb-28 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/skills</h2>
-            <span class="font-mono text-gray-500 text-sm">ls -R ~/skills</span>
+            <span class="font-mono text-gray-600 text-sm">ls -R ~/skills</span>
         </div>
 
         <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl scanlines">
@@ -795,7 +835,7 @@
 
         const COMMANDS = {
             help: () => [
-                ['Available commands:', 'text-gray-500'],
+                ['Available commands:', 'text-gray-400'],
                 ['  whoami       who you are talking to', 'text-white'],
                 ['  ls           list what is on this page', 'text-white'],
                 ['  projects     jump to the case studies', 'text-white'],
@@ -824,7 +864,7 @@
             },
             clear: () => { terminalBox.innerHTML = ''; return []; },
             sudo: () => [['nice try.', 'text-red-400']],
-            exit: () => [['no escape hatch here — scroll instead.', 'text-gray-500']],
+            exit: () => [['no escape hatch here — scroll instead.', 'text-gray-400']],
         };
 
         let lineIndex = 0, typing = null, partialEl = null, introDone = false;
@@ -913,7 +953,7 @@
         function endIntro() {
             if (introDone) return;
             introDone = true;
-            termLine('// type `help` for commands', 'text-gray-500 mt-3');
+            termLine('// type `help` for commands', 'text-gray-400 mt-3');
             mountPrompt(false);
         }
 
@@ -993,16 +1033,34 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const menuOverlay = document.getElementById('menu-overlay');
 
+        const closeBtn = document.getElementById('close-menu');
+
+        /* Everything outside the drawer gets `inert` while it is open — native focus
+           trap plus it hides the page behind from screen readers. */
+        const pageParts = [...document.body.children]
+            .filter(el => el !== mobileMenu && el !== menuOverlay);
+
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('open');
             menuOverlay.classList.remove('hidden');
+            hamburger.setAttribute('aria-expanded', 'true');
+            pageParts.forEach(el => el.setAttribute('inert', ''));
+            closeBtn.focus();
         });
-        document.getElementById('close-menu').addEventListener('click', closeMobileMenu);
+        closeBtn.addEventListener('click', closeMobileMenu);
 
         function closeMobileMenu() {
+            const wasOpen = mobileMenu.classList.contains('open');
             mobileMenu.classList.remove('open');
             menuOverlay.classList.add('hidden');
+            hamburger.setAttribute('aria-expanded', 'false');
+            pageParts.forEach(el => el.removeAttribute('inert'));
+            if (wasOpen) hamburger.focus();
         }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
+        });
     </script>
 </body>
 </html>
