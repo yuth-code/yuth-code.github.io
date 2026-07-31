@@ -138,6 +138,31 @@
         .writeup-card:hover .writeup-arrow { transform: translateX(4px); }
         .writeup-arrow { transition: transform 0.2s ease; display: inline-block; }
 
+        /* ── Keyboard focus — every interactive element was invisible to tab nav ── */
+        :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+        #term-input:focus-visible { outline-offset: 1px; }
+
+        /* ── skills.json syntax highlight ── */
+        .j-key   { color: #fb923c; }
+        .j-str   { color: #4ade80; }
+        .j-punct { color: #6b7280; }
+        .json-body { white-space: pre-wrap; word-break: break-word; }
+
+        /* ── Interactive terminal prompt ── */
+        #term-input { background: transparent; border: 0; color: #fff; font: inherit; caret-color: var(--accent); }
+        #term-input::placeholder { color: #4b5563; }
+
+        /* ── Respect reduced-motion: this page has 6 concurrent animations ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .fade-in { opacity: 1; transform: none; }
+        }
+
         /* tag color cycles */
         .tag-red   { background:#fee2e2; border:1px solid #ef4444; color:#b91c1c; }
         .tag-blue  { background:#dbeafe; border:1px solid #3b82f6; color:#1d4ed8; }
@@ -254,13 +279,14 @@
             </div>
         </div>
 
-        <!-- Terminal -->
-        <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl scanlines">
+        <!-- Terminal — interactive, see COMMANDS in scripts -->
+        <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl scanlines" id="terminal-shell">
             <div class="bg-gray-800 p-3 flex items-center gap-2 border-b border-gray-700">
                 <div class="terminal-dot bg-red-mac"></div>
                 <div class="terminal-dot bg-yellow-mac"></div>
                 <div class="terminal-dot bg-green-mac"></div>
                 <span class="ml-3 text-gray-400 text-xs font-mono">yuth@lab: ~/analysis</span>
+                <span class="ml-auto text-gray-500 text-[10px] font-mono hidden sm:inline">type <span class="text-orange-400">help</span></span>
             </div>
             <div class="p-6 font-mono text-sm h-72 overflow-y-auto scrollbar-hide bg-gray-900 leading-relaxed" id="terminal-content"></div>
         </div>
@@ -642,47 +668,29 @@
          SKILLS
     ══════════════════════════════════════ -->
     <section id="skills" class="mb-28 fade-in">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 border-b-2 border-black pb-4">~/skills</h2>
+        <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
+            <h2 class="text-3xl md:text-4xl font-bold">~/skills</h2>
+            <span class="font-mono text-gray-500 text-sm">cat ./skills.json</span>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <div class="bg-white p-6 brutal-border">
-                <h3 class="font-bold text-lg mb-4 text-blue-600">>> Languages</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Java</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Kotlin</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Objective-C</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Python</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Bash</span>
-                </div>
+        <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl scanlines">
+            <div class="bg-gray-800 p-3 flex items-center gap-2 border-b border-gray-700">
+                <div class="terminal-dot bg-red-mac"></div>
+                <div class="terminal-dot bg-yellow-mac"></div>
+                <div class="terminal-dot bg-green-mac"></div>
+                <span class="ml-3 text-gray-400 text-xs font-mono">yuth@lab: ~/skills.json</span>
             </div>
+            <div class="p-6 md:p-8 font-mono text-xs md:text-sm leading-loose json-body text-gray-300"><span class="j-punct">{</span>
+  <span class="j-key">"languages"</span><span class="j-punct">: [</span><span class="j-str">"Java"</span><span class="j-punct">, </span><span class="j-str">"Kotlin"</span><span class="j-punct">, </span><span class="j-str">"Objective-C"</span><span class="j-punct">, </span><span class="j-str">"Python"</span><span class="j-punct">, </span><span class="j-str">"Bash"</span><span class="j-punct">],</span>
 
-            <div class="bg-white p-6 brutal-border">
-                <h3 class="font-bold text-lg mb-4 text-green-600">>> Tools & Frameworks</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Frida</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Burp Suite</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Objection</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Wireshark</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">JADX</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">APKTool</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Hopper</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Ghidra</span>
-                </div>
-            </div>
+  <span class="j-key">"tools"</span><span class="j-punct">: [</span><span class="j-str">"Frida"</span><span class="j-punct">, </span><span class="j-str">"Objection"</span><span class="j-punct">, </span><span class="j-str">"Burp Suite"</span><span class="j-punct">, </span><span class="j-str">"JADX"</span><span class="j-punct">, </span><span class="j-str">"Ghidra"</span><span class="j-punct">, </span><span class="j-str">"APKTool"</span><span class="j-punct">, </span><span class="j-str">"MobSF"</span><span class="j-punct">, </span><span class="j-str">"Cycript"</span><span class="j-punct">, </span><span class="j-str">"Hopper"</span><span class="j-punct">, </span><span class="j-str">"Wireshark"</span><span class="j-punct">],</span>
 
-            <div class="bg-white p-6 brutal-border">
-                <h3 class="font-bold text-lg mb-4 text-orange-600">>> Specializations</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Android Hardening</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Root Detection</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">DRM Architecture</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">RASP</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">Anti-Piracy</span>
-                    <span class="bg-gray-100 px-3 py-1 border border-black text-sm font-bold">API Pentesting</span>
-                </div>
-            </div>
+  <span class="j-key">"specializations"</span><span class="j-punct">: [</span><span class="j-str">"Android Hardening"</span><span class="j-punct">, </span><span class="j-str">"Root Detection"</span><span class="j-punct">, </span><span class="j-str">"DRM Architecture"</span><span class="j-punct">, </span><span class="j-str">"RASP"</span><span class="j-punct">, </span><span class="j-str">"Anti-Piracy"</span><span class="j-punct">, </span><span class="j-str">"API Pentesting"</span><span class="j-punct">],</span>
 
+  <span class="j-key">"frameworks"</span><span class="j-punct">: [</span><span class="j-str">"OWASP MASVS"</span><span class="j-punct">, </span><span class="j-str">"OWASP Top 10"</span><span class="j-punct">, </span><span class="j-str">"STRIDE"</span><span class="j-punct">, </span><span class="j-str">"NIST CSF"</span><span class="j-punct">, </span><span class="j-str">"ISO 27001"</span><span class="j-punct">],</span>
+
+  <span class="j-key">"platforms"</span><span class="j-punct">: [</span><span class="j-str">"Android"</span><span class="j-punct">, </span><span class="j-str">"iOS"</span><span class="j-punct">, </span><span class="j-str">"Web"</span><span class="j-punct">, </span><span class="j-str">"API"</span><span class="j-punct">]</span>
+<span class="j-punct">}</span></div>
         </div>
     </section>
 
@@ -755,28 +763,165 @@
         ];
 
         const terminalBox = document.getElementById('terminal-content');
-        let lineIndex = 0;
+        const terminalShell = document.getElementById('terminal-shell');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function termLine(text, cls) {
+            const p = document.createElement('p');
+            p.className = cls || 'text-white';
+            p.textContent = text;
+            terminalBox.appendChild(p);
+            terminalBox.scrollTop = terminalBox.scrollHeight;
+            return p;
+        }
+
+        /* Commands that just scroll: name → section id */
+        const TERM_SECTIONS = {
+            about: 'about', bio: 'about', projects: 'projects', experience: 'experience',
+            work: 'experience', research: 'research', writeups: 'writeups', skills: 'skills',
+        };
+
+        const COMMANDS = {
+            help: () => [
+                ['Available commands:', 'text-gray-500'],
+                ['  whoami       who you are talking to', 'text-white'],
+                ['  ls           list what is on this page', 'text-white'],
+                ['  projects     jump to the case studies', 'text-white'],
+                ['  experience   jump to the work log', 'text-white'],
+                ['  research     papers and talks', 'text-white'],
+                ['  writeups     blog pipeline', 'text-white'],
+                ['  skills       skills.json', 'text-white'],
+                ['  contact      how to reach me', 'text-white'],
+                ['  resume       download resume.pdf', 'text-white'],
+                ['  clear        wipe the screen', 'text-white'],
+            ],
+            whoami: () => [
+                ['Yuthvek M J — Security Researcher II', 'text-white'],
+                ['Mobile security (Android + iOS), AppSec, SSDLC. Bengaluru, India.', 'text-gray-400'],
+                ['Invited speaker, RBLN Europe 2026 — Amsterdam.', 'text-gray-400'],
+            ],
+            ls: () => [['about/  projects/  experience/  research/  writeups/  skills.json  resume.pdf', 'text-blue-400']],
+            contact: () => [
+                ['yuthvek@gmail.com', 'text-orange-400'],
+                ['linkedin.com/in/yuthvek-mj-a87aab21b', 'text-gray-400'],
+                ['github.com/yuth-code', 'text-gray-400'],
+            ],
+            resume: () => {
+                window.open('resume.pdf', '_blank', 'noopener');
+                return [['opening resume.pdf ...', 'text-green-400']];
+            },
+            clear: () => { terminalBox.innerHTML = ''; return []; },
+            sudo: () => [['nice try.', 'text-red-400']],
+            exit: () => [['no escape hatch here — scroll instead.', 'text-gray-500']],
+        };
+
+        let lineIndex = 0, typing = null, partialEl = null, introDone = false;
+        let promptRow = null, termInput = null;
+        const cmdHistory = [];
+        let histIdx = 0;
+
+        function mountPrompt(focus) {
+            promptRow = document.createElement('div');
+            promptRow.className = 'flex items-baseline gap-2 text-blue-400 font-bold mt-1';
+            promptRow.innerHTML = '<span>yuth@lab:~$</span>';
+            termInput = document.createElement('input');
+            termInput.id = 'term-input';
+            termInput.className = 'flex-1 min-w-0';
+            termInput.autocomplete = 'off';
+            termInput.spellcheck = false;
+            termInput.setAttribute('aria-label', 'Terminal command input — type help');
+            termInput.addEventListener('keydown', onTermKey);
+            promptRow.appendChild(termInput);
+            terminalBox.appendChild(promptRow);
+            terminalBox.scrollTop = terminalBox.scrollHeight;
+            if (focus) termInput.focus();
+        }
+
+        function runCommand(raw) {
+            const cmd = raw.trim().toLowerCase();
+            promptRow.remove();
+            termLine('yuth@lab:~$ ' + raw, 'text-blue-400 font-bold');
+            if (cmd) {
+                if (TERM_SECTIONS[cmd]) {
+                    termLine('→ ~/' + cmd, 'text-green-400');
+                    document.getElementById(TERM_SECTIONS[cmd])
+                        .scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+                } else if (COMMANDS[cmd]) {
+                    COMMANDS[cmd]().forEach(([t, c]) => termLine(t, c));
+                } else {
+                    termLine('bash: ' + cmd + ': command not found — try `help`', 'text-red-400');
+                }
+                cmdHistory.push(raw);
+                histIdx = cmdHistory.length;
+            }
+            mountPrompt(true);
+        }
+
+        function onTermKey(e) {
+            if (e.key === 'Enter') {
+                runCommand(termInput.value);
+            } else if (e.key === 'ArrowUp' && histIdx > 0) {
+                e.preventDefault();
+                termInput.value = cmdHistory[--histIdx];
+            } else if (e.key === 'ArrowDown' && histIdx < cmdHistory.length) {
+                e.preventDefault();
+                histIdx++;
+                termInput.value = cmdHistory[histIdx] || '';
+            }
+        }
 
         function typeLine() {
-            if (lineIndex >= terminalLines.length) return;
+            if (introDone) return;
+            if (lineIndex >= terminalLines.length) { endIntro(); return; }
             const lineData = terminalLines[lineIndex];
-            const p = document.createElement('p');
-            p.className = lineData.class;
-            terminalBox.appendChild(p);
-            let charIndex = 0;
             const text = lineData.text;
-            const typeChar = setInterval(() => {
-                p.textContent += text[charIndex];
+            partialEl = termLine('', lineData.class);
+            let charIndex = 0;
+            typing = setInterval(() => {
+                partialEl.textContent += text[charIndex];
                 charIndex++;
                 terminalBox.scrollTop = terminalBox.scrollHeight;
                 if (charIndex === text.length) {
-                    clearInterval(typeChar);
+                    clearInterval(typing);
+                    typing = null;
+                    partialEl = null;
                     lineIndex++;
-                    setTimeout(typeLine, 350);
+                    setTimeout(typeLine, 300);
                 }
-            }, 18);
+            }, 14);
         }
-        window.addEventListener('load', typeLine);
+
+        function dumpRest() {
+            while (lineIndex < terminalLines.length) {
+                const l = terminalLines[lineIndex++];
+                termLine(l.text, l.class);
+            }
+        }
+
+        function endIntro() {
+            if (introDone) return;
+            introDone = true;
+            termLine('// type `help` for commands', 'text-gray-500 mt-3');
+            mountPrompt(false);
+        }
+
+        /* Any click or keypress during the intro skips the animation — 11 typed
+           lines is a long time to wait before the prompt is usable. */
+        function skipIntro() {
+            if (introDone) return;
+            if (typing) { clearInterval(typing); typing = null; }
+            if (partialEl) { partialEl.remove(); partialEl = null; }
+            dumpRest();
+            endIntro();
+        }
+
+        window.addEventListener('load', () => {
+            if (reduceMotion) { dumpRest(); endIntro(); } else { typeLine(); }
+        });
+        terminalShell.addEventListener('click', () => {
+            if (introDone) { if (termInput) termInput.focus(); } else { skipIntro(); }
+        });
+        document.addEventListener('keydown', () => { if (!introDone) skipIntro(); });
 
         /* ── Hero typewriter role ── */
         const roles = [
@@ -808,7 +953,10 @@
             }
             setTimeout(typeRole, deleting ? 40 : 65);
         }
-        window.addEventListener('load', typeRole);
+        window.addEventListener('load', () => {
+            if (reduceMotion) { roleEl.textContent = roles[0]; return; }
+            typeRole();
+        });
 
         /* ── Scroll fade-in ── */
         const fadeEls = document.querySelectorAll('.fade-in');
@@ -822,7 +970,11 @@
             const el = document.getElementById(id);
             const open = el.classList.toggle('open');
             btn.textContent = open ? '[ − HIDE METHODOLOGY ]' : '[ + READ METHODOLOGY ]';
+            btn.setAttribute('aria-expanded', open);
         }
+        document.querySelectorAll('[onclick^="toggleDetail"]').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+        });
 
         /* ── Mobile nav ── */
         const hamburger = document.getElementById('hamburger');
