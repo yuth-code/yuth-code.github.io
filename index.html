@@ -97,7 +97,16 @@
 
         /* ── Project expand toggle ── */
         .project-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-        .project-detail.open { max-height: 400px; }
+        .project-detail.open { max-height: 700px; }
+
+        /* ── Project icon tile ── */
+        .proj-icon {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 3.5rem; height: 3.5rem; font-size: 1.75rem; line-height: 1;
+            background: #1d1d1d; border: 3px solid #1d1d1d; margin-bottom: 1.25rem;
+            transition: transform 0.2s ease;
+        }
+        .group:hover .proj-icon { transform: rotate(-6deg) scale(1.06); }
 
         /* ── Mobile nav drawer ── */
         #mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
@@ -271,7 +280,7 @@
                 <div class="absolute top-4 right-4 bg-red-100 border border-black px-2 py-1 text-xs font-bold text-red-600 alert-pulse">
                     CONFIDENTIAL
                 </div>
-                <div class="text-5xl mb-4">🛡️</div>
+                <div class="proj-icon">🛡️</div>
                 <h3 class="text-2xl font-bold mb-2 group-hover:underline decoration-2">Edu-Tech DRM Architecture</h3>
                 <p class="text-gray-600 mb-4 text-base leading-relaxed">
                     Designed and audited the security infrastructure for a major learning platform.
@@ -297,7 +306,7 @@
 
             <!-- Card 2 -->
             <div class="col-span-1 bg-yellow-50 p-8 brutal-border brutal-card group">
-                <div class="text-5xl mb-4">🕵️‍♂️</div>
+                <div class="proj-icon">🔓</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">Advanced Root Detection</h3>
                 <p class="text-gray-600 mb-4 text-sm leading-relaxed">
                     Research into bypassing KernelSU and MagiskHide. Created a custom RASP (Runtime Application Self-Protection) module with multi-layer heuristics.
@@ -320,7 +329,7 @@
 
             <!-- Card 3 -->
             <div class="col-span-1 bg-blue-50 p-8 brutal-border brutal-card group">
-                <div class="text-5xl mb-4">🐛</div>
+                <div class="proj-icon">🐛</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">Vulnerability Research</h3>
                 <p class="text-gray-600 mb-4 text-sm leading-relaxed">
                     Ongoing analysis of API endpoints and mobile logic flaws. Found and reported critical IDORs and Info Leaks across multiple platforms.
@@ -344,7 +353,7 @@
             <!-- Card 4 — large -->
             <div class="col-span-1 md:col-span-2 bg-green-50 p-8 brutal-border brutal-card group">
                 <div class="flex flex-col md:flex-row items-start gap-6">
-                    <div class="text-5xl">📈</div>
+                    <div class="proj-icon">📊</div>
                     <div class="flex-1">
                         <h3 class="text-xl font-bold mb-2 group-hover:underline">Device Risk Profiling Engine</h3>
                         <p class="text-gray-600 text-sm leading-relaxed mb-4">
@@ -370,18 +379,28 @@
 
             <!-- Card 5 -->
             <div class="col-span-1 bg-purple-50 p-8 brutal-border brutal-card group">
-                <div class="text-5xl mb-4">🤖</div>
+                <div class="proj-icon">🚦</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">Yuth AI Guard</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
                     Browser extension that stops sensitive data from reaching AI chatbots. Intercepts the outbound request across 15 platforms
                     (ChatGPT, Claude, Gemini, Copilot…) and blocks it in-browser if the message contains PII, API keys, source code, or health
                     identifiers — 30+ client-side rules, zero data exfiltration, violations logged to an admin dashboard.
                 </p>
+                <button onclick="toggleDetail('detail-guard', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mt-4 mb-2">
+                    [ + READ METHODOLOGY ]
+                </button>
+                <div id="detail-guard" class="project-detail">
+                    <div class="border-t-2 border-dashed border-gray-300 mt-3 pt-3 text-xs text-gray-700 space-y-2">
+                        <p><strong class="text-orange-600">Approach:</strong> Interception happens at the network layer, not the DOM — the request is cancelled before it reaches the provider, so detection can't be raced by the page. Rules are tuned against false positives: ID numbers require their real separator format, phone numbers require a country prefix, and source-code rules need actual syntax so asking <em>about</em> SQL doesn't trip the SQL rule.</p>
+                        <p><strong class="text-orange-600">Impact:</strong> Two builds — a policy-managed one for users and an admin one with per-rule toggles. Every block and every "allow once" override is logged, so the dashboard shows which platforms and which data types actually leak instead of guessing. Legitimate sends stay possible; they just stay auditable.</p>
+                        <p><strong class="text-orange-600">Stack:</strong> Chrome Extension (MV3) · Firestore · 5 rule categories</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Card 6 -->
             <div class="col-span-1 md:col-span-2 bg-white p-8 brutal-border brutal-card group">
-                <div class="text-5xl mb-4">🔬</div>
+                <div class="proj-icon">🔬</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">AI-Powered Static RE Lab</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
                     Self-hosted lab for AI-assisted static reverse engineering of Android builds. Upload an APK/AAB/DEX and it decompiles with
@@ -389,6 +408,16 @@
                     secrets, endpoints and insecure API usage, runs semgrep/mobsfscan/apkid, then an AI agent explores the tree and returns a
                     structured findings report — CVSS computed in code, never by the model. Also diffs two versions of the same app.
                 </p>
+                <button onclick="toggleDetail('detail-relab', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mt-4 mb-2">
+                    [ + READ METHODOLOGY ]
+                </button>
+                <div id="detail-relab" class="project-detail">
+                    <div class="border-t-2 border-dashed border-gray-300 mt-3 pt-3 text-xs text-gray-700 space-y-2">
+                        <p><strong class="text-orange-600">Approach:</strong> Deterministic tooling first, model last. jadx, Ghidra headless and radare2 produce the artifacts; a secret/endpoint sweep plus semgrep, mobsfscan and apkid seed the triage; only then does the agent read the tree. Scanners run under hard bounds — taint analysis on R8's merged multi-MB classes OOM-kills the engine, and that failure is indistinguishable from a clean scan, so a zero-file scan is reported as an error rather than a result.</p>
+                        <p><strong class="text-orange-600">Impact:</strong> CVSS is computed in code from the finding's category and severity, never emitted by the model — severity drift across repeat runs on an unchanged build was measured on this lab, and a model-authored score would have dressed that drift up as precision. "Control not detected" results are quarantined instead of reported as missing controls, because obfuscated builds rename the symbols those rules look for. Every report leads with what was <em>not</em> tested.</p>
+                        <p><strong class="text-orange-600">Tools:</strong> jadx · Ghidra headless · radare2 · semgrep · mobsfscan · apkid · Claude Agent SDK</p>
+                    </div>
+                </div>
             </div>
 
         </div>
