@@ -142,11 +142,12 @@
         :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
         #term-input:focus-visible { outline-offset: 1px; }
 
-        /* ── skills.json syntax highlight ── */
-        .j-key   { color: #fb923c; }
-        .j-str   { color: #4ade80; }
-        .j-punct { color: #6b7280; }
-        .json-body { white-space: pre-wrap; word-break: break-word; }
+        /* ── skills: `ls` output — columns, so 40 items stay scannable ── */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+            gap: 0.35rem 1.5rem;
+        }
 
         /* ── Interactive terminal prompt ── */
         #term-input { background: transparent; border: 0; color: #fff; font: inherit; caret-color: var(--accent); }
@@ -190,7 +191,7 @@
             <a href="#experience" class="hover:underline decoration-2 underline-offset-4">./work.log</a>
             <a href="#research"   class="hover:underline decoration-2 underline-offset-4 text-green-700">./research/</a>
             <a href="#writeups"   class="hover:underline decoration-2 underline-offset-4 text-orange-600">./writeups/</a>
-            <a href="#skills"     class="hover:underline decoration-2 underline-offset-4">./skills.json</a>
+            <a href="#skills"     class="hover:underline decoration-2 underline-offset-4">./skills/</a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -214,7 +215,7 @@
         <a href="#experience" onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./work.log</a>
         <a href="#research"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-green-700">./research/</a>
         <a href="#writeups"   onclick="closeMobileMenu()" class="text-xl font-bold hover:underline text-orange-600">./writeups/</a>
-        <a href="#skills"     onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./skills.json</a>
+        <a href="#skills"     onclick="closeMobileMenu()" class="text-xl font-bold hover:underline">./skills/</a>
         <a href="mailto:yuthvek@gmail.com" class="bg-yellow-400 text-black px-4 py-3 font-bold brutal-border text-center text-sm mt-4">
             [ CONTACT_ME ]
         </a>
@@ -670,7 +671,7 @@
     <section id="skills" class="mb-28 fade-in">
         <div class="flex items-baseline justify-between mb-8 border-b-2 border-black pb-4">
             <h2 class="text-3xl md:text-4xl font-bold">~/skills</h2>
-            <span class="font-mono text-gray-500 text-sm">cat ./skills.json</span>
+            <span class="font-mono text-gray-500 text-sm">ls -R ~/skills</span>
         </div>
 
         <div class="bg-gray-900 rounded-lg brutal-border overflow-hidden shadow-2xl scanlines">
@@ -678,19 +679,30 @@
                 <div class="terminal-dot bg-red-mac"></div>
                 <div class="terminal-dot bg-yellow-mac"></div>
                 <div class="terminal-dot bg-green-mac"></div>
-                <span class="ml-3 text-gray-400 text-xs font-mono">yuth@lab: ~/skills.json</span>
+                <span class="ml-3 text-gray-400 text-xs font-mono">yuth@lab: ~/skills</span>
             </div>
-            <div class="p-6 md:p-8 font-mono text-xs md:text-sm leading-loose json-body text-gray-300"><span class="j-punct">{</span>
-  <span class="j-key">"languages"</span><span class="j-punct">: [</span><span class="j-str">"Java"</span><span class="j-punct">, </span><span class="j-str">"Kotlin"</span><span class="j-punct">, </span><span class="j-str">"Objective-C"</span><span class="j-punct">, </span><span class="j-str">"Python"</span><span class="j-punct">, </span><span class="j-str">"Bash"</span><span class="j-punct">],</span>
-
-  <span class="j-key">"tools"</span><span class="j-punct">: [</span><span class="j-str">"Frida"</span><span class="j-punct">, </span><span class="j-str">"Objection"</span><span class="j-punct">, </span><span class="j-str">"Burp Suite"</span><span class="j-punct">, </span><span class="j-str">"mitmproxy"</span><span class="j-punct">, </span><span class="j-str">"JADX"</span><span class="j-punct">, </span><span class="j-str">"Ghidra"</span><span class="j-punct">, </span><span class="j-str">"radare2"</span><span class="j-punct">, </span><span class="j-str">"APKTool"</span><span class="j-punct">, </span><span class="j-str">"baksmali"</span><span class="j-punct">, </span><span class="j-str">"MobSF"</span><span class="j-punct">, </span><span class="j-str">"mobsfscan"</span><span class="j-punct">, </span><span class="j-str">"semgrep"</span><span class="j-punct">, </span><span class="j-str">"apkid"</span><span class="j-punct">, </span><span class="j-str">"YARA"</span><span class="j-punct">, </span><span class="j-str">"Capstone"</span><span class="j-punct">, </span><span class="j-str">"Cycript"</span><span class="j-punct">, </span><span class="j-str">"Hopper"</span><span class="j-punct">, </span><span class="j-str">"Wireshark"</span><span class="j-punct">, </span><span class="j-str">"Magisk"</span><span class="j-punct">, </span><span class="j-str">"LSPosed"</span><span class="j-punct">, </span><span class="j-str">"KernelSU"</span><span class="j-punct">, </span><span class="j-str">"Claude Agent SDK"</span><span class="j-punct">],</span>
-
-  <span class="j-key">"specializations"</span><span class="j-punct">: [</span><span class="j-str">"Android Hardening"</span><span class="j-punct">, </span><span class="j-str">"Root Detection"</span><span class="j-punct">, </span><span class="j-str">"Anti-Tamper & Anti-Debug"</span><span class="j-punct">, </span><span class="j-str">"DRM Architecture"</span><span class="j-punct">, </span><span class="j-str">"RASP"</span><span class="j-punct">, </span><span class="j-str">"Anti-Piracy"</span><span class="j-punct">, </span><span class="j-str">"Forensic Watermarking"</span><span class="j-punct">, </span><span class="j-str">"NDK / JNI Analysis"</span><span class="j-punct">, </span><span class="j-str">"Obfuscation Analysis"</span><span class="j-punct">, </span><span class="j-str">"Play Integrity Attestation"</span><span class="j-punct">, </span><span class="j-str">"API Pentesting"</span><span class="j-punct">, </span><span class="j-str">"SAST Rule Authoring"</span><span class="j-punct">, </span><span class="j-str">"Threat Modeling"</span><span class="j-punct">, </span><span class="j-str">"Secure Code Review"</span><span class="j-punct">, </span><span class="j-str">"Data Loss Prevention"</span><span class="j-punct">, </span><span class="j-str">"Incident Response"</span><span class="j-punct">, </span><span class="j-str">"Digital Forensics"</span><span class="j-punct">, </span><span class="j-str">"AI-Assisted Analysis"</span><span class="j-punct">],</span>
-
-  <span class="j-key">"frameworks"</span><span class="j-punct">: [</span><span class="j-str">"OWASP MASVS"</span><span class="j-punct">, </span><span class="j-str">"OWASP Top 10"</span><span class="j-punct">, </span><span class="j-str">"STRIDE"</span><span class="j-punct">, </span><span class="j-str">"NIST CSF"</span><span class="j-punct">, </span><span class="j-str">"ISO 27001"</span><span class="j-punct">],</span>
-
-  <span class="j-key">"platforms"</span><span class="j-punct">: [</span><span class="j-str">"Android"</span><span class="j-punct">, </span><span class="j-str">"iOS"</span><span class="j-punct">, </span><span class="j-str">"Web"</span><span class="j-punct">, </span><span class="j-str">"API"</span><span class="j-punct">]</span>
-<span class="j-punct">}</span></div>
+            <div class="p-6 md:p-8 font-mono text-xs md:text-sm leading-relaxed">
+                <div class="mb-6">
+                    <p class="text-blue-400 font-bold">yuth@lab:~$ ls <span class="text-orange-400">languages/</span></p>
+                    <div class="skill-grid text-green-400 mt-2"><span>Java</span><span>Kotlin</span><span>Python</span><span>Bash</span></div>
+                </div>
+                <div class="mb-6">
+                    <p class="text-blue-400 font-bold">yuth@lab:~$ ls <span class="text-orange-400">tools/</span></p>
+                    <div class="skill-grid text-green-400 mt-2"><span>Frida</span><span>Objection</span><span>Burp Suite</span><span>mitmproxy</span><span>JADX</span><span>Ghidra</span><span>radare2</span><span>APKTool</span><span>baksmali</span><span>MobSF</span><span>mobsfscan</span><span>semgrep</span><span>apkid</span><span>YARA</span><span>Capstone</span><span>Cycript</span><span>Hopper</span><span>Wireshark</span><span>Magisk</span><span>LSPosed</span><span>KernelSU</span><span>Claude Agent SDK</span></div>
+                </div>
+                <div class="mb-6">
+                    <p class="text-blue-400 font-bold">yuth@lab:~$ ls <span class="text-orange-400">specializations/</span></p>
+                    <div class="skill-grid text-green-400 mt-2"><span>Android Hardening</span><span>Root Detection</span><span>Anti-Tamper &amp; Anti-Debug</span><span>DRM Architecture</span><span>RASP</span><span>Anti-Piracy</span><span>Forensic Watermarking</span><span>NDK / JNI Analysis</span><span>Obfuscation Analysis</span><span>Play Integrity Attestation</span><span>API Pentesting</span><span>SAST Rule Authoring</span><span>Threat Modeling</span><span>Secure Code Review</span><span>Data Loss Prevention</span><span>Incident Response</span><span>Digital Forensics</span><span>AI-Assisted Analysis</span></div>
+                </div>
+                <div class="mb-6">
+                    <p class="text-blue-400 font-bold">yuth@lab:~$ ls <span class="text-orange-400">frameworks/</span></p>
+                    <div class="skill-grid text-green-400 mt-2"><span>OWASP MASVS</span><span>OWASP Top 10</span><span>STRIDE</span><span>NIST CSF</span><span>ISO 27001</span></div>
+                </div>
+                <div class="">
+                    <p class="text-blue-400 font-bold">yuth@lab:~$ ls <span class="text-orange-400">platforms/</span></p>
+                    <div class="skill-grid text-green-400 mt-2"><span>Android</span><span>iOS</span><span>Web</span><span>API</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -790,7 +802,7 @@
                 ['  experience   jump to the work log', 'text-white'],
                 ['  research     papers and talks', 'text-white'],
                 ['  writeups     blog pipeline', 'text-white'],
-                ['  skills       skills.json', 'text-white'],
+                ['  skills       tools and specializations', 'text-white'],
                 ['  contact      how to reach me', 'text-white'],
                 ['  resume       download resume.pdf', 'text-white'],
                 ['  clear        wipe the screen', 'text-white'],
@@ -800,7 +812,7 @@
                 ['Mobile security (Android + iOS), AppSec, SSDLC. Bengaluru, India.', 'text-gray-400'],
                 ['Invited speaker, RBLN Europe 2026 — Amsterdam.', 'text-gray-400'],
             ],
-            ls: () => [['about/  projects/  experience/  research/  writeups/  skills.json  resume.pdf', 'text-blue-400']],
+            ls: () => [['about/  projects/  experience/  research/  writeups/  skills/  resume.pdf', 'text-blue-400']],
             contact: () => [
                 ['yuthvek@gmail.com', 'text-orange-400'],
                 ['linkedin.com/in/yuthvek-mj-a87aab21b', 'text-gray-400'],
