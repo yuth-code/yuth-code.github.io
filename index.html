@@ -99,14 +99,16 @@
         .project-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
         .project-detail.open { max-height: 700px; }
 
-        /* ── Project icon tile ── */
+        /* ── Project icon tile — mono token, not emoji (emoji fights Space Mono) ── */
         .proj-icon {
             display: inline-flex; align-items: center; justify-content: center;
-            width: 3.5rem; height: 3.5rem; font-size: 1.75rem; line-height: 1;
-            background: #1d1d1d; border: 3px solid #1d1d1d; margin-bottom: 1.25rem;
-            transition: transform 0.2s ease;
+            min-width: 3.25rem; height: 2.5rem; padding: 0 0.8rem; margin-bottom: 1.25rem;
+            background: #1d1d1d; color: #f3f4ef; border: 3px solid #1d1d1d;
+            font-size: 0.9rem; font-weight: 700; letter-spacing: 0.12em; line-height: 1;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
         }
-        .group:hover .proj-icon { transform: rotate(-6deg) scale(1.06); }
+        .proj-icon::before { content: '$ '; color: #f97316; }
+        .group:hover .proj-icon { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #f97316; }
 
         /* ── Mobile nav drawer ── */
         #mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
@@ -206,7 +208,7 @@
                 </span>
                 <a href="https://www.rbln.com/speakers/yuthvek-mj" target="_blank" rel="noopener"
                    class="inline-flex items-center gap-2 bg-black text-white border-2 border-black px-3 py-1 font-bold text-xs hover:bg-gray-800 transition">
-                    🎤 SPEAKING @ RBLN EUROPE 2026 ↗
+                    ● SPEAKING @ RBLN EUROPE 2026 ↗
                 </a>
             </div>
 
@@ -280,16 +282,16 @@
                 <div class="absolute top-4 right-4 bg-red-100 border border-black px-2 py-1 text-xs font-bold text-red-600 alert-pulse">
                     CONFIDENTIAL
                 </div>
-                <div class="proj-icon">🛡️</div>
+                <div class="proj-icon">drm</div>
                 <h3 class="text-2xl font-bold mb-2 group-hover:underline decoration-2">Edu-Tech DRM Architecture</h3>
                 <p class="text-gray-600 mb-4 text-base leading-relaxed">
                     Designed and audited the security infrastructure for a major learning platform.
                     Prevented video piracy and unauthorized screen recording on rooted Android devices.
                 </p>
                 <ul class="text-sm font-bold space-y-2 mb-4">
-                    <li>✅ Implemented Widevine DRM (L1/L3 fallback strategy)</li>
-                    <li>✅ Blocked Screen Recorders via Overlay & FLAG_SECURE</li>
-                    <li>✅ Encrypted Local Storage with SQLCipher + key rotation</li>
+                    <li><span class="text-green-600">✓</span> Implemented Widevine DRM (L1/L3 fallback strategy)</li>
+                    <li><span class="text-green-600">✓</span> Blocked Screen Recorders via Overlay & FLAG_SECURE</li>
+                    <li><span class="text-green-600">✓</span> Encrypted Local Storage with SQLCipher + key rotation</li>
                 </ul>
                 <!-- Expandable methodology -->
                 <button onclick="toggleDetail('detail-drm', this)" class="text-xs font-bold border border-black px-3 py-1 hover:bg-black hover:text-white transition mb-2">
@@ -306,7 +308,7 @@
 
             <!-- Card 2 -->
             <div class="col-span-1 bg-yellow-50 p-8 brutal-border brutal-card group">
-                <div class="proj-icon">🔓</div>
+                <div class="proj-icon">su</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">Advanced Root Detection</h3>
                 <p class="text-gray-600 mb-4 text-sm leading-relaxed">
                     Research into bypassing KernelSU and MagiskHide. Created a custom RASP (Runtime Application Self-Protection) module with multi-layer heuristics.
@@ -329,7 +331,7 @@
 
             <!-- Card 3 -->
             <div class="col-span-1 bg-blue-50 p-8 brutal-border brutal-card group">
-                <div class="proj-icon">🐛</div>
+                <div class="proj-icon">cve</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">Vulnerability Research</h3>
                 <p class="text-gray-600 mb-4 text-sm leading-relaxed">
                     Ongoing analysis of API endpoints and mobile logic flaws. Found and reported critical IDORs and Info Leaks across multiple platforms.
@@ -353,7 +355,7 @@
             <!-- Card 4 — large -->
             <div class="col-span-1 md:col-span-2 bg-green-50 p-8 brutal-border brutal-card group">
                 <div class="flex flex-col md:flex-row items-start gap-6">
-                    <div class="proj-icon">📊</div>
+                    <div class="proj-icon">risk</div>
                     <div class="flex-1">
                         <h3 class="text-xl font-bold mb-2 group-hover:underline">Device Risk Profiling Engine</h3>
                         <p class="text-gray-600 text-sm leading-relaxed mb-4">
@@ -379,7 +381,7 @@
 
             <!-- Card 5 -->
             <div class="col-span-1 bg-purple-50 p-8 brutal-border brutal-card group">
-                <div class="proj-icon">🚦</div>
+                <div class="proj-icon">dlp</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">Yuth AI Guard</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
                     Browser extension that stops sensitive data from reaching AI chatbots. Intercepts the outbound request across 15 platforms
@@ -400,7 +402,7 @@
 
             <!-- Card 6 -->
             <div class="col-span-1 md:col-span-2 bg-white p-8 brutal-border brutal-card group">
-                <div class="proj-icon">🔬</div>
+                <div class="proj-icon">jadx</div>
                 <h3 class="text-xl font-bold mb-2 group-hover:underline">AI-Powered Static RE Lab</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
                     Self-hosted lab for AI-assisted static reverse engineering of Android builds. Upload an APK/AAB/DEX and it decompiles with
@@ -538,7 +540,7 @@
         <a href="https://www.rbln.com/speakers/yuthvek-mj" target="_blank" rel="noopener"
            class="block bg-black text-white p-6 md:p-7 brutal-border brutal-btn mb-6 group">
             <div class="flex flex-col md:flex-row md:items-center gap-3">
-                <span class="bg-orange-500 text-black px-3 py-1 text-xs font-bold border-2 border-orange-500 self-start whitespace-nowrap">🎤 INVITED SPEAKER</span>
+                <span class="bg-orange-500 text-black px-3 py-1 text-xs font-bold border-2 border-orange-500 self-start whitespace-nowrap">● INVITED SPEAKER</span>
                 <div class="flex-1">
                     <h3 class="text-lg md:text-xl font-bold group-hover:text-orange-400 transition">"The KernelSU Challenge: Defending App Integrity"</h3>
                     <p class="text-gray-400 text-sm font-mono mt-1">RBLN Europe 2026 · Amsterdam — defense-in-depth strategies for protecting application integrity against kernel-level rooting frameworks.</p>
@@ -551,7 +553,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <div class="bg-white p-6 brutal-border brutal-card">
-                <span class="tag-green text-xs px-2 py-1 font-bold mb-3 inline-block">📄 Web of Science Indexed</span>
+                <span class="tag-green text-xs px-2 py-1 font-bold mb-3 inline-block">Web of Science Indexed</span>
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     Impact of Quantum Computing in Cryptography &amp; Analyzing Business Crimes via OSINT Architecture
                 </h3>
@@ -561,7 +563,7 @@
             </div>
 
             <div class="bg-white p-6 brutal-border brutal-card">
-                <span class="tag-blue text-xs px-2 py-1 font-bold mb-3 inline-block">🎓 Conference Paper</span>
+                <span class="tag-blue text-xs px-2 py-1 font-bold mb-3 inline-block">Conference Paper</span>
                 <h3 class="text-lg font-bold mb-2 leading-snug">
                     A Comprehensive Study of OSINT Tools for Cybersecurity in the Indian Environment
                 </h3>
